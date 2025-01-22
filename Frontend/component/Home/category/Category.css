@@ -1,0 +1,122 @@
+.category{
+    background-color: aliceblue;
+}
+.cat-heading{
+    width: 99vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.cat-heading>span{
+    height: 2.8rem;
+    width: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.677);
+    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.2);
+    border-bottom: 1.5px solid gray;
+    background-color: white;
+}
+
+.category-section{
+    text-align: center;
+}
+.category-circle{
+    display: flex;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3rem 8rem;
+    gap: 1.5rem;
+}
+
+.sub-section{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    background-color: white;
+    gap: 1rem;
+    overflow: hidden;
+    background-color: aliceblue;
+    cursor: pointer;
+}
+.sub-section>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out ;
+}
+
+.sub-section>img:hover{
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.cat-name{
+    text-align: center;
+    cursor: pointer;
+    width: 10rem;
+}
+
+@media (max-width:985px){
+    .sub-section{
+        height: 8rem;
+        width: 8rem;
+    }
+    .category-circle{
+        margin: 3rem 7rem;
+    }
+    .cat-name{
+        width: 8rem;
+    }
+}
+@media (max-width:855px){
+    .sub-section{
+        height: 6rem;
+        width: 6rem;
+    }
+    .category-circle{
+        margin: 3rem 6rem;
+    }
+    .cat-name{
+        width: 6rem;
+    }
+}
+
+@media (max-width:600px){
+    .cat-heading>span{
+        height: 2rem;
+        width: 8rem;
+        font-size: medium;
+    }
+    .category-circle{
+        margin: 3rem 5rem;
+    }
+}
+
+@media (max-width:490px){
+    .sub-section{
+        height: 4rem;
+        width: 4rem;
+    }
+    .category-circle{
+        margin: 3rem 4.5rem;
+    }
+    .cat-name{
+        width: 4.5rem;
+    }
+}
+
+@media (max-width:350px){
+    .sub-section{
+        height: 4rem;
+        width: 4rem;
+    }
+    .category-circle{
+        margin: 3rem 3rem;
+    }
+}

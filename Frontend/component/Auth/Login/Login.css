@@ -1,0 +1,72 @@
+.login {
+    height: 85vh;
+    width: 100vw;
+    margin-top: 1rem;
+    background-image: url('https://img.freepik.com/premium-vector/happy-farmers-day-indian-farmer-working-agriculture-field_628838-1992.jpg?w=900');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: white;
+}
+
+.login-banner {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(95, 160, 220);
+    height: 20rem;
+    width: 22rem;
+    border-radius: 5px;
+    box-shadow: 0 0 30px 2px rgb(31, 31, 31);
+}
+.content{
+    margin: 1rem;
+}
+.heading{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.signup-details{
+    padding: 1rem 1rem;
+}
+
+.signup-input{
+    margin: 1rem 0px;
+}
+
+.signup-input>input{
+    padding: 5px 10px;
+    outline: none;
+    border:none;
+    border-radius: 3px;
+}
+
+.signup-details>button{
+    height: 2rem;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+@media (max-width:900px){
+    .banner{
+        left: 50%;
+    }
+}
+
+@media (max-width:350px){
+    .banner{
+        width: 20rem;
+    }
+}
+
+@media (max-width:320px){
+    .banner{
+        width: 18rem;
+        height: 30rem;
+    }
+}

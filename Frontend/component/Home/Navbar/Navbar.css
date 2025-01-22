@@ -1,0 +1,96 @@
+.navbar{
+    height: 4.5rem;
+    width: 98.5vw;
+    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.2);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background: linear-gradient(to bottom, rgba(102, 0, 255, 0.2),rgba(102, 0, 255,0));
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.navbar span{
+    cursor: pointer;
+}
+.searchBar{
+    position: relative;
+}
+.logo>b{
+    cursor: pointer;
+}
+
+.searchBar>span{
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.searchBar>input{
+    outline: none;
+    border:none;
+    height: 2.5rem;
+    width: 35rem;
+    font-size: 22px;
+    border-radius: 5px;
+    padding: 0 40px;
+    cursor: pointer;
+}
+.name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0.9;
+}
+.icon{
+    font-size: x-large;
+}
+.text{
+    overflow-y: hidden;
+}
+
+@media (max-width:850px){
+    .navbar{
+        flex-direction: column;
+        height: 7rem;
+        position: relative;
+    }
+    .logo{
+        position: absolute;
+        left: 3vw;
+        top: 2vh;
+    }
+    .location{
+        position: absolute;
+        left: 16vw;
+        top: 2vh;
+    }
+    .profile{
+        position: absolute;
+        right:15vw;
+        top:2vh;
+    }
+    .cart{
+        position: absolute;
+        right: 4vw;
+        top:2vh;
+    }
+    .searchBar{
+        width: 95vw;
+        display: flex;
+        position: relative;
+        top: 1.5rem;
+    }
+    .searchBar > input {
+        width: calc(100% - 40px); /* Input adjusts based on icon size */
+        height: 2.5rem;
+        font-size: 15px;
+    }
+}
+
+@media (max-width:400px){
+    .text{
+        display: none;
+    }
+}
+

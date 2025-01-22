@@ -1,0 +1,75 @@
+.profile-section {
+    height: 80vh;
+    width: 90vw;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem; /* Gap between left and right sections */
+    position: relative;
+}
+
+.profile-left-section {
+    height: 95%;
+    width: 23%;
+    box-shadow: 0 0 10px 0 rgb(55, 54, 54);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.profile-left-section>h3{
+    border-bottom: 1px solid black;
+    width: 50%;
+    color: rgba(43, 42, 42, 0.805);
+    margin: 2rem 0;
+}
+
+.profile-left-section>p{
+    width: 60%;
+    border: 1px solid rgb(91, 91, 91);
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.profile-left-section>p:hover{
+    background-color: rgba(72, 72, 72, 0.5);
+    border: 1.2px solid tomato;
+}
+
+
+.profile-right-section {
+    height: 95%;
+    width: 65%;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 0 10px 0 grey;
+    border-radius: 5px;
+}
+
+.profile-line {
+    width: 1px; /* Thickness of the vertical line */
+    background-color: rgba(47, 46, 46, 0.563); /* Line color */
+    height: 100%; /* Height of the line matches the sections */
+}
+
+.profile-photo>img{
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+}
+
+.profile-details>button{
+    width: 100%;
+    padding: 0.5rem;
+    font-size: large;
+}
+.profile-details>button:hover{
+    border: 2px solid tomato;
+}

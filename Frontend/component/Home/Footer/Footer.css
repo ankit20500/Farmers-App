@@ -1,0 +1,130 @@
+.top-footer{
+    height: auto;
+    width: 90vw;
+    margin: 0 auto;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 grey;
+    padding: 1rem 0;
+}
+.f-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align items */
+    flex: 1 1 25%; /* Each item takes 45% of the row for two items per row */
+    margin: 0.5rem 0; /* Add vertical spacing between rows */
+    text-align: center;
+}
+
+.f-name>:first-child{
+    font-size: 2.5rem;
+    color: rgba(15, 229, 215, 0.853);
+}
+
+.f-name > :last-child {
+    width: auto; /* Adjust to content size */
+    text-align: center;
+    font-size: 1rem; /* Adjust font size for better readability */
+    margin-top: 0.5rem;
+}
+.f-name>span{
+    overflow-y: hidden;
+}
+
+@media (max-width: 520px) {
+    .top-footer{
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .f-name > :first-child {
+        font-size: 1.8rem; 
+    }
+
+    .f-name > :last-child {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .f-name > :first-child {
+        font-size: 1.8rem; 
+    }
+
+    .f-name > :last-child {
+        font-size: 0.8rem;
+    }
+}
+
+.LastFooter{
+    height: 20rem;
+    width: 95vw;
+    box-shadow: 0px 0px 5px 0px grey;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 5px auto;
+    border-radius: 5px;
+    padding: 2rem 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto 0;
+}
+
+.footer-column h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #555;
+    display: inline-block;
+    padding-bottom: 0.2rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin: 0.5rem 0;
+}
+
+.footer-column ul li a {
+    color: #989494;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #7a3a3a;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.social-media > span {
+    font-size: 1.5rem;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    color: #333;
+}
+
+.social-media > span:hover {
+    transform: scale(1.2);
+    color: #007bff;
+}
