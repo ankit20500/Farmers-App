@@ -16,10 +16,11 @@ const userSchema=new mongoose.Schema({
         lowercase: true,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
-    contactNumber:{
-        type:Number,
+    contactNumber: {
+        type: Number,
         match: [/^\d{10}$/, 'Please enter a valid 10-digit contact number'],
-        default:null
+        default: null, 
+        unique:false
     },
     password:{
         type:String,

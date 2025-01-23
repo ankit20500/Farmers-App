@@ -1,6 +1,7 @@
-import {createProductRepo} from '../Repository/ProductRepository.js'
+import {createProductRepo, findAllProductsRepo} from '../Repository/ProductRepository.js'
 import { findUser } from '../Repository/UserRepository.js';
 
+// create products
 export const createProductService=async(body,res)=>{
     try {
         const {email}=res.user;
@@ -13,6 +14,16 @@ export const createProductService=async(body,res)=>{
 
         // if user is admin then it can create the products
         const response=await createProductRepo(body);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// find all products based on query
+export const findAllProductsService=async(category,subcategory)=>{
+    try {
+        const response=await findAllProductsRepo(category,subcategory);
         return response;
     } catch (error) {
         throw error;

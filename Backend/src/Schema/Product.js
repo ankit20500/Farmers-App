@@ -1,67 +1,60 @@
 import mongoose from "mongoose";
 
 const productSchema=new mongoose.Schema({
-    category:{     // main category of the product
+    productname:{
         type:String,
-        required:[true,'product category is required']
+        required:[true,"product name is required"],
+        maxLength:[20,"product name must be less than 20 words"],
+        minLength:[3,"product name must be more than 3 words"],
+        lowercase:true
     },
-    subcategories:[   // sub-category of the product
+    category:{
+        type:String,
+        required:[true,'product category is required'],
+        lowercase:true
+    },
+    subcategory:{
+        type:String,
+        required:[true,"product sub-category is required"],
+        lowercase:true
+    },
+    description:{
+        type:String,
+        required:[true,"product description is required"]
+    },
+    price:{
+        type:Number,
+        required:[true,"product price is required"]
+    },
+    stock:{
+        type:Number,
+        default:1
+    },
+    ratings:{
+        type:Number,
+        max:[5,"ratings must be less than or equals to 5"],
+        min:[0,"ratings must be greater than or equals to 0"],
+        default:0
+    },
+    image:{
+        type:String,
+        required:[true,"product image is required"]
+    },
+    reviews:[
         {
-            name:{
-                type:String,
-                required:[true,'product subcategory name is required']
+            user:{
+                type:mongoose.Schema.Types.ObjectId,
+                ref:"User",
+                required:[true,"Please login for review the product"]
             },
-            // each product details
-            products:[
-                {
-                    name:{
-                        type:String,
-                        required:[true,'product name is required'],
-                        maxLength:[20,'name should not greater than 20 character'],
-                        minLength:[3,'name should not less than 3 character'],
-                        trim:true
-                    },
-                    description:{
-                        type:String,
-                        required:[true,'product description is required'],
-                        minLength:[5,'product description must be atleast 5 characters']
-                    },
-                    price:{
-                        type:Number,
-                        required:[true,'product price is required'],
-                    },
-                    image:{
-                        type:String,
-                        required:[true,'product image is required']
-                    },
-                    stock:{
-                        type:Number,
-                        required:[true,'in stock status is required'],
-                        min:[0,"stock cannot be negative"],
-                        default:1
-                    },
-                    // review section is started
-                    reviews:[
-                        {
-                            user:{
-                                type:mongoose.Schema.Types.ObjectId,
-                                ref:'User',
-                                required:[true,'please login for review the product']
-                            },
-                            rating:{
-                                type:Number,
-                                required:[true,'rating is required for review the product'],
-                                min:[0,'rating is not less that 0'],
-                                max:[5,'review is not greater than 5'],
-                            },
-                            comment:{
-                                type:String,
-                                required:[true,'comment is necessary if you want to give reviews']
-                            }
-                        }
-                    ]
-                }
-            ]
+            comment:{
+                type:String,
+                required:[true,"comment is required for reviewing"]
+            },
+            rating:{
+                type:Number,
+                required:[true,"please rate the product"]
+            }
         }
     ]
 },{timestamps:true});

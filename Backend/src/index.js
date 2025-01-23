@@ -4,7 +4,6 @@ import { PORT } from './config/ServerConfig.js';
 import { connectDB } from './config/dbConfig.js';
 import userRoutes from './Routes/UserRouter.js';
 import authRoutes from './Routes/AuthRouter.js';
-import { isLoggedIn } from './validator/authValidator.js';
 import productRoutes from './Routes/ProductRouter.js';
 
 

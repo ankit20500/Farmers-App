@@ -1,20 +1,23 @@
-import { createProductService } from "../service/ProductService.js"
+import { createProductService, findAllProductsService } from "../service/ProductService.js"
+import { errorHandler, successHandler } from "../Utility/Handler.js";
 
 export const createProductController=async(req,res)=>{
     try {
         const response=await createProductService(req.body,res);
-        return res.status(201).json({
-            success:true,
-            message:'product created successfully',
-            data:response,
-            error:{}
-        })
+        return successHandler(res,201,"product created successfully",response);
     } catch (error) {
-        return res.status(401).json({
-            success:false,
-            message:error.message,
-            data:{},
-            error:error
-        })
+        return errorHandler(res,404,error.message,error);
     }
 }
+
+// find all products based on query
+export const findAllProductsController=async(req,res)=>{
+    try {
+        const {category,subcategory} = req.query;
+        const response=await findAllProductsService(category,subcategory);
+        return successHandler(res,201,"Here is all products",response);
+    } catch (error) {
+        return errorHandler(res,404,error.message,error);
+    }
+}
+
