@@ -5,15 +5,22 @@ import { CgProfile } from 'react-icons/cg'
 import { BiCart } from 'react-icons/bi'
 import InputField from '../../Resuable_Comp/InputField';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { contextProvider } from '../../ContextApi';
 // import { handleProfile } from './LogicPart';
 
 function Navbar() {
   const navigate=useNavigate();
+  const {user}=useContext(contextProvider);
 
   function handleProfile(){
-    navigate('/auth/register')
+    if(user){
+      navigate('/auth/user/profile');
+    }
+    else{
+      navigate('/auth/login');
+    }
   }
-
 
   return (
     <div className='navbar'>

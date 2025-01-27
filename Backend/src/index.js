@@ -1,5 +1,6 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import { PORT } from './config/ServerConfig.js';
 import { connectDB } from './config/dbConfig.js';
 import userRoutes from './Routes/UserRouter.js';
@@ -11,6 +12,10 @@ const app=express();
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
+app.use(cors({
+  origin: "*",  // Allow frontend origin
+  credentials: true   // Allow cookies and authentication headers
+}));
 
 app.use("/user",userRoutes);
 app.use("/auth",authRoutes);

@@ -1,6 +1,7 @@
 import { createProductService, findAllProductsService } from "../service/ProductService.js"
 import { errorHandler, successHandler } from "../Utility/Handler.js";
 
+// create products
 export const createProductController=async(req,res)=>{
     try {
         const response=await createProductService(req.body,res);

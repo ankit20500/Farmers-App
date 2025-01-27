@@ -4,7 +4,7 @@ const productSchema=new mongoose.Schema({
     productname:{
         type:String,
         required:[true,"product name is required"],
-        maxLength:[20,"product name must be less than 20 words"],
+        maxLength:[50,"product name must be less than 50 words"],
         minLength:[3,"product name must be more than 3 words"],
         lowercase:true
     },

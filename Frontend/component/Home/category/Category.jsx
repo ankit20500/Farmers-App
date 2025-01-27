@@ -56,9 +56,7 @@ function Category(){
                     name={'Farming Equipments'} 
                     image={'https://media.bighaat.com/wsfbanners/8827ae31-f29f-4851-80c5-bde6464abc3f.webp?w=1920&q=80'}
                 />
-
                 
-
             </div>
         </div>
     )

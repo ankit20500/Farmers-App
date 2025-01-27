@@ -21,7 +21,7 @@ export const createUserRepo=async (obj)=>{
 // find user details
 export const findUser=async(email)=>{
     try {
-        const response=await User.findOne({email:email});
+        const response=await User.findOne({email});
         return response;
     } catch (error) {
         throw error;
@@ -35,6 +35,30 @@ export const updateUserRepo=async(email,body)=>{
             {email},
             {$set:body},
             {new:true});
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// change user password
+export const changePasswordRepo=async(email,password)=>{
+    try {
+        const response=await User.findOneAndUpdate(
+            {email},
+            {$set:{password:password}},
+            {new:true}
+        );
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// delete user
+export const deleteUserRepo=async(id)=>{
+    try {
+        const response=await User.findByIdAndDelete(id);
         return response;
     } catch (error) {
         throw error;

@@ -1,8 +1,8 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './ChooseCategory.css'
 
 function ChooseCategory(){
-
+    const navigate=useNavigate();
     const {name}=useParams();
     const categoryItems={
         pesticides:['Herbicides','Insecticides','Fungicides','Organic Pesticides'],
@@ -19,11 +19,17 @@ function ChooseCategory(){
     }
     const normalizedCategoryName = name.replace(/\s+/g, '_');
     const items = categoryItems[normalizedCategoryName];
+
+    // go to products page according to sub category
+    function handleProduct(item){
+        navigate(`/categories/${name.replace(/\s+/g, '_')}/subCategory/${item.replace(/\s+/g, '_')}`);
+    }
+
     return(
         <div className='category-home'>
             <div className='category-content'>
                 {items.length>0?(
-                    items.map((item,idx)=><div key={idx}>{item}</div>)
+                    items.map((item,idx)=><div onClick={()=>handleProduct(item)} key={idx}>{item}</div>)
                 ):<p>No items</p>}
             </div>
         </div>

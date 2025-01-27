@@ -19,7 +19,7 @@ const userSchema=new mongoose.Schema({
     contactNumber: {
         type: Number,
         match: [/^\d{10}$/, 'Please enter a valid 10-digit contact number'],
-        default: null, 
+        default: 1234567895, 
         unique:false
     },
     password:{

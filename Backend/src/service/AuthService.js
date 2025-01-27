@@ -8,7 +8,6 @@ import { JWT_SECRET } from "../config/ServerConfig.js";
 export const userLoginService=async(payload)=>{
     const email=payload.email;
     const password=payload.password;
-
     // 1. check that if the user is exist or not with this password
     const user=await findUser(email);
     if(!user){

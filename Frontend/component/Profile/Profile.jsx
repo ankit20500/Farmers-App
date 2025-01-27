@@ -1,16 +1,50 @@
+import { useContext, useEffect } from 'react';
 import EachComp from '../Auth/EachComp';
 import Button from '../Resuable_Comp/Button';
 import './Profile.css'
+import { contextProvider } from '../ContextApi';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Profile(){
+    const {user,setUser,UserLogout,deleteUser}=useContext(contextProvider);
+    const navigate=useNavigate();
+
+    // user logout section
+    async function handleLogout() {
+        await UserLogout();
+        navigate("/");
+    }
+    // If user is null, you can return loading or a placeholder
+    useEffect(() => {
+        if (!user) {
+            console.log(user);
+            navigate("/auth/login"); // Redirect to login page if user is not logged in
+            toast("please login")
+        }
+    },[user, navigate]);
+
+    // user delete 
+    async function handleDelete(){
+        try {
+            const response=await deleteUser(user._id);
+            toast(response.data.message);
+            setUser(null);
+            navigate("/");
+        } catch (error) {
+            toast(error.response.data.message);
+        }
+    }
+
     return(
         <div className="profile-section">
             <div className="profile-left-section">
                 <h3>Settings</h3>
                 <p>Dashboard</p>
                 <p>Settings</p>
-                <p>Update password</p>
-                <p>Logout</p>
+                <p onClick={handleDelete}>Delete Account</p>
+                <p onClick={()=>navigate("/auth/user/change-password")}>Change password</p>
+                <p onClick={handleLogout}>Logout</p>
             </div>
 
             <div className="profile-line"></div> {/* Vertical line */}
@@ -21,16 +55,18 @@ function Profile(){
                 </div>
 
                 <div className='profile-details'>
-                    <EachComp name={'Full Name'} value={'Ankit Kumar'} readOnly={true}/>
+                    <EachComp  name={'Full Name'} value={user.data.name} readOnly={true}/>
 
-                    <EachComp name={'Email'} value={'example@domain.com'} readOnly={true}/>
+                    <EachComp  name={'Email'} value={user.data.email} readOnly={true}/>
 
-                    <EachComp name={'Mobile Number'} value={'+91-0000000000'} readOnly={true}/>
+                    <EachComp name={'Mobile Number'} value={user.data.contactNumber} readOnly={true}/>
 
-                    <label for="comments">Comments:</label><br/>
-                    <textarea id="comments" name="comments" rows="4" cols="15">
-                        Enter your comments here
-                    </textarea>
+                    <label htmlFor="comments">Comments:</label><br/>
+                    <textarea 
+                        id="comments" 
+                        name="comments" 
+                        rows="3" cols="20" 
+                        defaultValue="Enter your comments here" />
                     <br/>
 
                     <Button value={'Edit Profile'}/>
