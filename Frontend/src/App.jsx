@@ -11,6 +11,8 @@ import { ContextApi } from '../component/ContextApi'
 import { ToastContainer, Bounce } from 'react-toastify';
 import ChangePassword from '../component/Auth/ChangePassword/HandlePassword'
 import Product from '../component/Products/Products'
+import ProudctDetails from '../component/Products/ProductDetails'
+import Cart from '../component/Cart/Cart'
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
               <Route path='/auth/user/change-password' element={<ChangePassword/>}/>
               <Route path='/categories/:name' element={<ChooseCategory/>}/>
               <Route path='/categories/:category/subCategory/:subCategory' element={<Product/>}/>
+              <Route path='/product/:id' element={<ProudctDetails/>}/>
+              <Route path='/user/cart' element={<Cart/>}/>
             </Routes>
           </Layout>
         </BrowserRouter>

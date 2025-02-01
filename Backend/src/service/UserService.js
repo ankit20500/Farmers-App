@@ -1,3 +1,4 @@
+import { createCartRepo } from "../Repository/CartRepository.js";
 import { changePasswordRepo, createUserRepo, deleteUserRepo, findUser, updateUserRepo } from "../Repository/UserRepository.js"
 import bcrypt from 'bcrypt';
 
@@ -13,6 +14,8 @@ export const createUserService=async (body)=>{
         }
         // not registered then make a profile
         const response=await createUserRepo(obj);
+        // make a unique cart for each user's
+        await createCartRepo(response._id);
         return response;
 }
 
@@ -33,8 +36,8 @@ export const changePasswordService=async(prevPassword,newPassword,email)=>{
             throw{message:"Both the password is same"};
         }
         const user=await findUser(email);
-        const isPrevPasswordSame=await bcrypt.compare(prevPassword,user.password);
-        if(!isPrevPasswordSame){
+        const prevpassword=await bcrypt.compare(prevPassword,user.password);
+        if(!prevpassword){
             throw{message:"previous password is wrong"};
         }
         // before saving password, hash the new password

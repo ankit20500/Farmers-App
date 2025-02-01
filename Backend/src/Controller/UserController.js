@@ -39,7 +39,7 @@ export const createUserController=async function(req,res){
 // update profile
 export const updateUserController=async function(req,res){
     try {
-        const {email}=res.user;
+        const {email}=req.user;
         const response=await updateUserService(email,req.body);
         return successHandler(res,201,"profile update successfully",response);
     } catch (error) {
@@ -51,7 +51,7 @@ export const updateUserController=async function(req,res){
 export const changePasswordController=async function(req,res){
     try {
         const {prevPassword,newPassword}=req.body;
-        const {email}=res.user;
+        const {email}=req.user;
         const response=await changePasswordService(prevPassword,newPassword,email);
         return successHandler(res,200,"password change successfully",response);
     } catch (error) {
@@ -62,7 +62,7 @@ export const changePasswordController=async function(req,res){
 // delete user
 export const deleteUserController=async function(req,res){
     try {
-        const {id}=res.user;
+        const {id}=req.user;
         const response=await deleteUserService(id);
         res.clearCookie("authToken",{
             httpOnly:true,

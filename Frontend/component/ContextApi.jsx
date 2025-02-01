@@ -36,7 +36,7 @@ function ContextApi({children}){
             }
         }
     }
-
+    // call the fetchUserData function to fetch the user's data;
     useEffect(()=>{
         fetchUserData();
     },[user])
@@ -91,9 +91,30 @@ function ContextApi({children}){
             throw error;
         }
     }
+    // fetch the product's data with category and subCategory
+    async function fetchProduct(category,subCategory){
+        try{
+            const response=await axios.get(`http://localhost:3000/product/products?category=${category}&subcategory=${subCategory}`,{},{
+                withCredentials:true
+            });
+            return response;
+        }catch (error) {
+            throw error;
+        }
+    }
+
+    // fetch the product's data with id
+    async function fetchProductById(id){
+        try {
+            const response=await axios.get(`http://localhost:3000/product/details/${id}`);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
 
     return(
-        <contextProvider.Provider value={{signupButton,deleteUser,changePassword,UserLogout,user,setUser,loginUser}}>
+        <contextProvider.Provider value={{signupButton, fetchProductById,fetchProduct,deleteUser,changePassword,UserLogout,user,setUser,loginUser}}>
             {children}
         </contextProvider.Provider>
     )

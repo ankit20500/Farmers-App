@@ -5,16 +5,16 @@ function ChooseCategory(){
     const navigate=useNavigate();
     const {name}=useParams();
     const categoryItems={
-        pesticides:['Herbicides','Insecticides','Fungicides','Organic Pesticides'],
-        seeds:['Wheat seeds','Rice seeds','Vegetable seeds','Fruit seeds'],
-        Fertilizers:['Organic fertilizers','Chemical fertilizers','Liquid fertilizers'],
-        Nutrients:['Bio-Nutrients','Growth Enhancers','Soil Conditioners'],
-        Storage_Solutions:['Grain storage bags','Silos','Storage tanks'],
-        Flower_Seeds:['Hybrid flower seeds','Wildflowser seeds','organic flower seeds','seasonal flower seeds'],
-        Organic_Farming:['Bio fertilizers','Bio pesticides','Vermicompost'],
-        Protective_Gear:['Gloves','Masks','Hats and boots','Shoes'],
-        Animal_Husbandry:['Animal feed','Medicine and Vaccines','Fencing and shelter supplier','Milking and dairy equipment'],
-        Farming_Equipments:['Hand tools','Machinery','Irrigation tools','Planting and Harvesting equipment']
+        pesticides:['herbicides','insecticides','fungicides','organic pesticides'],
+        seeds:['wheat seeds','rice seeds','vegetable seeds','fruit seeds'],
+        fertilizers:['organic fertilizers','chemical fertilizers','liquid fertilizers'],
+        nutrients:['bio-nutrients','growth enhancers','soil conditioners'],
+        storage_solutions:['grain storage bags','silos','storage tanks'],
+        flower_seeds:['hybrid flower seeds','wildflowser seeds','organic flower seeds','seasonal flower seeds'],
+        organic_farming:['bio fertilizers','bio pesticides','vermicompost'],
+        protective_gear:['gloves','masks','hats and boots','shoes'],
+        animal_husbandry:['animal feed','medicine and vaccines','fencing and shelter supplier','milking and dairy equipment'],
+        farming_equipments:['hand tools','Machinery','irrigation tools','planting and harvesting equipment']
 
     }
     const normalizedCategoryName = name.replace(/\s+/g, '_');

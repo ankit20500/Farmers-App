@@ -7,7 +7,6 @@ export const errorHandler=function(res,statusCode,message,error){
     })
 }
 
-
 // success handlers
 export const successHandler=function(res,statusCode,message,data){
     return res.status(statusCode).json({

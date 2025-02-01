@@ -23,7 +23,16 @@ export const findAllProductsRepo=async(category,subcategory)=>{
     try {
         // console.log(query);
         const response=await Products.find({category,subcategory});
-        console.log(response);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// find product details by id
+export const findProductByIdRepo=async(id)=>{
+    try {
+        const response=await Products.find({_id:id});
         return response;
     } catch (error) {
         throw error;

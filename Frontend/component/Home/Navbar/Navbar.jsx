@@ -13,6 +13,7 @@ function Navbar() {
   const navigate=useNavigate();
   const {user}=useContext(contextProvider);
 
+  // go to profile section
   function handleProfile(){
     if(user){
       navigate('/auth/user/profile');
@@ -20,6 +21,11 @@ function Navbar() {
     else{
       navigate('/auth/login');
     }
+  }
+
+  // go to cart section
+  function handleCart(){
+    navigate("/user/cart");
   }
 
   return (
@@ -42,8 +48,8 @@ function Navbar() {
         </div>
 
         <div className='cart name'>
-          <span className='icon'><BiCart/></span>
-          <span className='text'>Cart</span>
+          <span className='icon' onClick={handleCart}><BiCart/></span>
+          <span className='text' onClick={handleCart}>Cart</span>
         </div>
     </div>
   )

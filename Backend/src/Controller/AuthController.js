@@ -62,7 +62,7 @@ export const userLogoutController=async(req,res)=>{
 // find profile
 export const userProfileController=async(req,res)=>{
     try {
-        const {email}=res.user;
+        const {email}=req.user;
         const response=await findUser(email);
         res.status(200).json({
             success:true,

@@ -26,7 +26,7 @@ export const isLoggedIn=async(req,res,next)=>{
 
     // stores the user information in response section so that at any points when token will be their
     // then we can say that user will be valid and find their details with the help of this info..
-    res.user={
+    req.user={
         email:decode.email,
         id:decode.id
     }

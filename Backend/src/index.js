@@ -6,6 +6,7 @@ import { connectDB } from './config/dbConfig.js';
 import userRoutes from './Routes/UserRouter.js';
 import authRoutes from './Routes/AuthRouter.js';
 import productRoutes from './Routes/ProductRouter.js';
+import cartRoutes from './Routes/CartRouter.js';
 
 
 const app=express();
@@ -13,13 +14,14 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(cors({
-  origin: "*",  // Allow frontend origin
+  origin: "http://localhost:5173",  // Allow frontend origin
   credentials: true   // Allow cookies and authentication headers
 }));
 
 app.use("/user",userRoutes);
 app.use("/auth",authRoutes);
 app.use("/product",productRoutes);
+app.use("/cart",cartRoutes);
 
 
 
