@@ -1,14 +1,20 @@
 import { useParams } from 'react-router-dom';
 import './Products.css';
 import { useContext, useEffect, useState } from 'react';
-import { contextProvider } from '../ContextApi';
 import { toast } from 'react-toastify';
 import Stars from '../StarComp/Star';
 import Loader from '../Loader/Loader';
+import ImageField from '../Resuable_Comp/ImageField';
+import Button from '../Resuable_Comp/Button';
+import { userContext } from '../ContextApi/userContextApi';
+import { productContext } from '../ContextApi/productContext';
+import { cartContext } from '../ContextApi/cartContext';
 
 function ProudctDetails(){
     const {id}=useParams();
-    const {fetchProductById}=useContext(contextProvider);
+    const {AddItemsToCart}=useContext(cartContext);
+    const {fetchProductById}=useContext(productContext);
+    const {user}=useContext(userContext);
     const [product,setProduct]=useState(null);
     
     // fetch the product details with id
@@ -16,7 +22,6 @@ function ProudctDetails(){
         try {
             async function fetchData(){
                 const response=await fetchProductById(id);
-                console.log(response.data.data[0]);
                 setProduct(response.data.data[0]);
             }
             fetchData();
@@ -24,6 +29,23 @@ function ProudctDetails(){
             toast(error.response.message);
         }
     },[id])
+
+    // function for adding the product into cart
+    async function handleAddToCart(){
+        if(user){
+            try {
+                const detail={
+                    product:product._id,
+                    quantity:1
+                }
+                const response=await AddItemsToCart(detail);
+                toast(response.data.message);
+            } catch (error) {
+                console.log(error);
+                toast(error.response);
+            }
+        }
+    }
 
     // if product is null then loader will be shown
     if (!product) {
@@ -35,7 +57,7 @@ function ProudctDetails(){
             <span>Go Back</span>
             <div className='product-subHome'>
                 <div className='product-details-left'>
-                    <img src="https://i5.walmartimages.com/asr/e82d6b6d-b65d-4d3c-9cc2-8664a1f7042e_1.4489bf730cb2591f99d531aba0404700.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff"/>
+                    <ImageField image={product.image}/>
                 </div>
                 <div className='product-details-right'>
                     <p>{product.productname}</p>
@@ -53,7 +75,7 @@ function ProudctDetails(){
                         <span>Stock:</span>
                         <span>{product.stock>0?"In Stock":"Out of Stock"}</span>
                         </div>
-                    <button className="add-to-cart-btn">ADD TO CART</button>
+                   <Button onclick={handleAddToCart} value={'ADD TO CART'}/>
                 </div>
             </div>
         </div>

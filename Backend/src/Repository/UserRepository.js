@@ -31,6 +31,7 @@ export const findUser=async(email)=>{
 // update user details
 export const updateUserRepo=async(email,body)=>{
     try {
+        console.log(body);
         const response=await User.findOneAndUpdate(
             {email},
             {$set:body},

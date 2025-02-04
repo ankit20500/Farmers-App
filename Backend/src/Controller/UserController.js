@@ -62,7 +62,7 @@ export const changePasswordController=async function(req,res){
 // delete user
 export const deleteUserController=async function(req,res){
     try {
-        const {id}=req.user;
+        const id=req.params.id;
         const response=await deleteUserService(id);
         res.clearCookie("authToken",{
             httpOnly:true,

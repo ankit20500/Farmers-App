@@ -1,4 +1,4 @@
-import { createCartRepo } from "../Repository/CartRepository.js";
+import { createCartRepo, deleteCartRepo } from "../Repository/CartRepository.js";
 import { changePasswordRepo, createUserRepo, deleteUserRepo, findUser, updateUserRepo } from "../Repository/UserRepository.js"
 import bcrypt from 'bcrypt';
 
@@ -53,6 +53,9 @@ export const changePasswordService=async(prevPassword,newPassword,email)=>{
 export const deleteUserService=async(id)=>{
     try {
         const response=await deleteUserRepo(id);
+        // if user delete their account then also their cart will be deleted
+        const response1=await deleteCartRepo(id);
+        console.log(response1);
         return response;
     } catch (error) {
         throw error;

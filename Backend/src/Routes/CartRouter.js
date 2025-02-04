@@ -1,7 +1,10 @@
 import express from 'express';
-import { getCartController } from '../Controller/CartController.js';
+import { AddItemsController, deleteCartProductController, getCartController } from '../Controller/CartController.js';
+import { isLoggedIn } from '../validator/authValidator.js';
 const cartRoutes=express.Router();
 
-cartRoutes.get("/",getCartController);
+cartRoutes.post("/",getCartController);
+cartRoutes.put('/add/items',isLoggedIn,AddItemsController);
+cartRoutes.delete('/product/:id',isLoggedIn,deleteCartProductController);
 
 export default cartRoutes;

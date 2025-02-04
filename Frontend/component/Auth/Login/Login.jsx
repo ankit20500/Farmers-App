@@ -5,12 +5,13 @@ import EachComp from '../EachComp';
 import { useContext, useState } from 'react';
 import { contextProvider } from '../../ContextApi';
 import { toast } from 'react-toastify';
+import { userContext } from '../../ContextApi/userContextApi';
 
 function Login(){
     const navigate=useNavigate();
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
-    const {loginUser,setUser}=useContext(contextProvider);
+    const {loginUser,setUser}=useContext(userContext);
 
     async function handleLogin(){
         const obj={email,password};

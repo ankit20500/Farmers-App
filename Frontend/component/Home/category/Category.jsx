@@ -8,12 +8,12 @@ function Category(){
             </div>
             <div className='category-circle'>
                 <CategorySection  
-                    name={'pesticides'} 
+                    name={'Pesticides'} 
                     image={'https://th.bing.com/th/id/OIP.JZk6lq1hE-j3sF-ibK-_fwHaHa?w=600&h=600&rs=1&pid=ImgDetMain'}
                 />
 
                 <CategorySection 
-                    name={'seeds'} 
+                    name={'Seeds'} 
                     image={'https://media.bighaat.com/wsfbanners/ba912d25-3087-4240-8405-3b2622b5d961.webp?w=1920&q=80'}
                 />
 

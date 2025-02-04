@@ -5,13 +5,13 @@ import { CgProfile } from 'react-icons/cg'
 import { BiCart } from 'react-icons/bi'
 import InputField from '../../Resuable_Comp/InputField';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { contextProvider } from '../../ContextApi';
-// import { handleProfile } from './LogicPart';
+import { useContext, useState } from 'react';
+import { userContext } from '../../ContextApi/userContextApi';
 
 function Navbar() {
   const navigate=useNavigate();
-  const {user}=useContext(contextProvider);
+  const {user}=useContext(userContext);
+  const [search,setSearch]=useState('');
 
   // go to profile section
   function handleProfile(){
@@ -28,6 +28,11 @@ function Navbar() {
     navigate("/user/cart");
   }
 
+  // h
+  function handleInput(e){
+    setSearch(e.target.value);
+  }
+
   return (
     <div className='navbar'>
         <div className='logo'><b onClick={()=>navigate("/")}>Ankit</b></div>
@@ -39,7 +44,7 @@ function Navbar() {
 
         <div className='searchBar'>
           <span><BsSearch/></span>
-          <InputField type={"text"} placeholder={"Search something..."}/>
+          <InputField onChange={(e)=>handleInput(e)} type={"text"} placeholder={"Search something..."}/>
         </div>
 
         <div className='profile name'>

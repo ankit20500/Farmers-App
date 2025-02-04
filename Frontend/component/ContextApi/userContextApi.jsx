@@ -1,10 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-const contextProvider=createContext();
+export const userContext=createContext();
 
-function ContextApi({children}){
+export const UserProvider=({children})=>{
+    const navigate=useNavigate();
     const [user,setUser]=useState(null);
 
     // register the user
@@ -32,14 +34,14 @@ function ContextApi({children}){
             if (error.response && error.response.status === 401) {
                 setUser(null);
             } else {
-                console.error("Error fetching user data:", error);
+                console.error("Error for fetching user's data:", error);
             }
         }
     }
     // call the fetchUserData function to fetch the user's data;
     useEffect(()=>{
         fetchUserData();
-    },[user])
+    },[])
 
     // user login logic
     async function loginUser(userDetail){
@@ -62,6 +64,7 @@ function ContextApi({children}){
             })
             toast(response.data.message);
             setUser(null);
+            navigate("/");
         } catch (error) {
             console.log("logout error",error);
             toast(error.response.data.message);
@@ -80,44 +83,39 @@ function ContextApi({children}){
         }
     }
 
+    // update the user's profile
+    async function updateUserProfile(obj){
+        try {
+            const response=await axios.put("http://localhost:3000/user/update",obj,{
+                withCredentials:true
+            })
+            toast(response.data.message);
+        } catch (error) {
+            console.log(error);
+            toast(error.response.data.message);
+        }
+    }
+
     // delete user
     async function deleteUser(id){
         try {
             const response=await axios.delete(`http://localhost:3000/user/delete/${id}`,{
                 withCredentials:true
             });
-            return response;
+            toast(response.data.message);
+            setUser(null);
+            navigate("/");
         } catch (error) {
-            throw error;
-        }
-    }
-    // fetch the product's data with category and subCategory
-    async function fetchProduct(category,subCategory){
-        try{
-            const response=await axios.get(`http://localhost:3000/product/products?category=${category}&subcategory=${subCategory}`,{},{
-                withCredentials:true
-            });
-            return response;
-        }catch (error) {
-            throw error;
+            console.log(error);
+            toast(error.response.data.message);
         }
     }
 
-    // fetch the product's data with id
-    async function fetchProductById(id){
-        try {
-            const response=await axios.get(`http://localhost:3000/product/details/${id}`);
-            return response;
-        } catch (error) {
-            throw error;
-        }
-    }
+
 
     return(
-        <contextProvider.Provider value={{signupButton, fetchProductById,fetchProduct,deleteUser,changePassword,UserLogout,user,setUser,loginUser}}>
+        <userContext.Provider value={{signupButton,loginUser,changePassword,updateUserProfile,UserLogout,deleteUser,user,setUser}}>
             {children}
-        </contextProvider.Provider>
+        </userContext.Provider>
     )
 }
-
-export {ContextApi,contextProvider};

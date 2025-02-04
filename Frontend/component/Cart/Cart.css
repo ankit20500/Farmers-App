@@ -33,6 +33,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
+    font-size: medium;
 }
 .cart-strip>div{
     display: flex;
@@ -79,7 +80,9 @@
 }
 .cart-img-section>img{
     height: 6rem;
+    width: 5rem;
     margin-right: 1rem;
+    margin-bottom: 0.5rem;
 }
 .cart-img-section{
     display: flex;
@@ -90,8 +93,15 @@
 .cart-items-content>:first-child{
     font-size: large;
 }
-.cart-items-content>:last-child{
+.cart-items-content>:nth-child(2){
     font-size: small;
+}
+.cart-items-content>:nth-child(3){
+    font-size: small;
+}
+.cart-items-content>:last-child{
+    font-size: x-large;
+    cursor: pointer;
 }
 
 .quantity-price-section{
@@ -168,4 +178,31 @@
     .quantity > button {
         padding: 0.1rem 0.4rem;
     }
+}
+
+
+/* when user is not login then it shows */
+.cart-not-login{
+    height: 60vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-cart{
+    font-size: 8rem;
+    color: tomato;
+}
+.cart-not-login>button{
+    padding: 0.3rem 2rem;
+    margin-top: 0.2rem;
+    background-color: rgba(29, 27, 27, 0.922);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.cart-not-login>button:hover{
+    background-color: rgba(29, 27, 27, 1);
 }

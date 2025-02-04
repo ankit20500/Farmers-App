@@ -8,6 +8,9 @@ import ChooseCategory from '../component/Choose_Category/ChooseCategory'
 import ScrollToTop from './ScrollToTop'
 import Profile from '../component/Profile/Profile'
 import { ContextApi } from '../component/ContextApi'
+import { UserProvider } from '../component/ContextApi/userContextApi'
+import { ProductProvider } from '../component/ContextApi/productContext'
+import { CartProvider } from '../component/ContextApi/cartContext'
 import { ToastContainer, Bounce } from 'react-toastify';
 import ChangePassword from '../component/Auth/ChangePassword/HandlePassword'
 import Product from '../component/Products/Products'
@@ -17,8 +20,10 @@ import Cart from '../component/Cart/Cart'
 function App() {
   return (
     <>
-      <ContextApi>
-        <BrowserRouter>
+      <BrowserRouter>
+        <UserProvider>
+        <ProductProvider>
+        <CartProvider>
         <ScrollToTop/>
           <Layout>
             <Routes>
@@ -33,8 +38,10 @@ function App() {
               <Route path='/user/cart' element={<Cart/>}/>
             </Routes>
           </Layout>
-        </BrowserRouter>
-      </ContextApi>
+          </CartProvider>
+          </ProductProvider>
+          </UserProvider>
+      </BrowserRouter>
       <ToastContainer
         position="bottom-center"
         autoClose={1000}

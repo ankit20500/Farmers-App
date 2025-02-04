@@ -21,7 +21,6 @@ export const createProductRepo = async (body) => {
 // find all the products according to the query arrise
 export const findAllProductsRepo=async(category,subcategory)=>{
     try {
-        // console.log(query);
         const response=await Products.find({category,subcategory});
         return response;
     } catch (error) {
@@ -33,6 +32,22 @@ export const findAllProductsRepo=async(category,subcategory)=>{
 export const findProductByIdRepo=async(id)=>{
     try {
         const response=await Products.find({_id:id});
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// find products when user search anything
+export const findProductsRepo=async(input)=>{
+    try {
+        const response=await Products.find({
+            $or:[
+                {productname:{$regex:input,$options:'i'}},
+                {category:{$regex:input,$options:'i'}},
+                {subcategory:{$regex:input,$options:'i'}}
+            ]
+        });
         return response;
     } catch (error) {
         throw error;

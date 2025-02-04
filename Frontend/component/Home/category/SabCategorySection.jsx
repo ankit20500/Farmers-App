@@ -5,7 +5,8 @@ function CategorySection({image,name}){
     const navigate=useNavigate();
 
     function handlebutton(){
-        navigate(`/categories/${name.replace(/\s+/g, '_')}`);
+        const category=name.toLowerCase();
+        navigate(`/categories/${category.replace(/\s+/g, '_')}`);
     }
     return (
         <div className='category-section'>

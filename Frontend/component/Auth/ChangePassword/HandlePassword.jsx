@@ -2,12 +2,12 @@ import { useContext, useState } from 'react';
 import Button from '../../Resuable_Comp/Button.jsx';
 import EachComp from '../EachComp.jsx';
 import './HandlePassword.css';
-import { contextProvider } from '../../ContextApi.jsx';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { userContext } from '../../ContextApi/userContextApi.jsx';
 
 function ChangePassword(){
-    const {changePassword}=useContext(contextProvider);
+    const {changePassword}=useContext(userContext);
     const navigate=useNavigate(); 
 
     const [prevPassword,setPrevPassword]=useState('');

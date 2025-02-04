@@ -4,8 +4,8 @@ import InputField from '../../Resuable_Comp/InputField';
 import EachComp from '../EachComp';
 import './Signup.css'
 import { useContext, useState } from 'react';
-import { contextProvider } from '../../ContextApi';
 import { toast } from 'react-toastify';
+import { userContext } from '../../ContextApi/userContextApi';
 
 function Signup(){
     const navigate=useNavigate();
@@ -13,7 +13,7 @@ function Signup(){
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
 
-    const {signupButton}=useContext(contextProvider);
+    const {signupButton}=useContext(userContext);
 
     async function handleSubmitButton(){
         try {

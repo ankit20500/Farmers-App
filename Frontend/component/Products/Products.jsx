@@ -1,15 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
 import './Products.css';
 import { useContext, useEffect, useState } from "react";
-import { contextProvider } from "../ContextApi";
 import { toast } from "react-toastify";
 import Stars from "../StarComp/Star";
 import Loader from "../Loader/Loader";
+import ImageField from "../Resuable_Comp/ImageField";
+import { FaBan } from "react-icons/fa";
+import { productContext } from "../ContextApi/productContext";
 
 function Product() {
     const navigate=useNavigate();
     const { category, subCategory } = useParams(); // Extracting parameters
-    const {fetchProduct}=useContext(contextProvider);
+    const {fetchProduct}=useContext(productContext);
     const [product,setProduct]=useState([]);
     useEffect(()=>{
         async function fetchData(){
@@ -37,14 +39,18 @@ function Product() {
                 {product.length>0?(
                     product.map((item,idx)=>(
                         <div onClick={()=>navigate(`/product/${item._id}`)} key={idx} className="product-cart">
-                            <img src="https://i5.walmartimages.com/asr/e82d6b6d-b65d-4d3c-9cc2-8664a1f7042e_1.4489bf730cb2591f99d531aba0404700.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff"/>
+                            <ImageField image={item.image}/>
                             <p>{item.productname}</p>
                             <p>{item.category}</p>
-                            <p>₹{item.price}</p>
+                            <p>₹{item.price}{'/kg'}</p>
                             <div><Stars rating={item.ratings}/></div>
                         </div>
                     ))
-                ):(<p>No product found</p>)}
+                ):(<div className="no-product">
+                    <p><FaBan/></p>
+                    <p>Sorry!</p>
+                    <p>We have no Product with this Category</p>
+                </div>)}
             </div>
         </>
     );

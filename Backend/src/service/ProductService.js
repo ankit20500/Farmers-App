@@ -1,11 +1,10 @@
-import {createProductRepo, findAllProductsRepo, findProductByIdRepo} from '../Repository/ProductRepository.js'
+import {createProductRepo, findAllProductsRepo, findProductByIdRepo, findProductsRepo} from '../Repository/ProductRepository.js'
 import { findUser } from '../Repository/UserRepository.js';
 
 // create products
 export const createProductService=async(body,email)=>{
     try {
         const user=await findUser(email);
-
         // check that user is admin or user only
         if(user.role!='admin'){
             throw{message:"only admin have authority for creating products"}
@@ -34,6 +33,16 @@ export const findProductByIdService=async(id)=>{
     try {
         const response=await findProductByIdRepo(id);
         return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// find products according to searching
+export const findProductsService=async(input)=>{
+    try {
+        const products=await findProductsRepo(input);
+        return products;
     } catch (error) {
         throw error;
     }

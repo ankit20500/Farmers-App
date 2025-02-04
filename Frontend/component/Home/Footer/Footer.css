@@ -117,14 +117,14 @@
     overflow: hidden;
 }
 
-.social-media > span {
+.social-media>a {
     font-size: 1.5rem;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
-    color: #333;
+    color: #007bff;
 }
 
-.social-media > span:hover {
+.social-media>a:hover {
     transform: scale(1.2);
-    color: #007bff;
+    color: #066ede;
 }
