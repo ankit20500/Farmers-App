@@ -16,13 +16,15 @@ function ProudctDetails(){
     const {fetchProductById}=useContext(productContext);
     const {user}=useContext(userContext);
     const [product,setProduct]=useState(null);
+    const [loader,setLoader]=useState(true);
     
     // fetch the product details with id
     useEffect(()=>{
         try {
             async function fetchData(){
                 const response=await fetchProductById(id);
-                setProduct(response.data.data[0]);
+                setProduct(response.data.data);
+                setLoader(false);
             }
             fetchData();
         } catch (error) {   
@@ -48,7 +50,7 @@ function ProudctDetails(){
     }
 
     // if product is null then loader will be shown
-    if (!product) {
+    if (loader) {
         return <Loader/>
     }
     

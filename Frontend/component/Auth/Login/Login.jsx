@@ -3,7 +3,6 @@ import Button from '../../Resuable_Comp/Button';
 import './Login.css'
 import EachComp from '../EachComp';
 import { useContext, useState } from 'react';
-import { contextProvider } from '../../ContextApi';
 import { toast } from 'react-toastify';
 import { userContext } from '../../ContextApi/userContextApi';
 

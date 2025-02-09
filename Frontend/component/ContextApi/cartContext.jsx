@@ -32,10 +32,23 @@ export const CartProvider=({children})=>{
         }
     }
 
-    // delete the product from the cart 
-    async function deleteCartProduct(productId){
+    // decrease the items from cart if user will decrease the no. of products
+    async function decreaseItemsToCart(productDetails){
         try {
-            const cart=await axios.delete(`http://localhost:3000/cart/product/${productId}`,{
+            const cart=await axios.put("http://localhost:3000/cart/decrease/items",productDetails,{
+                withCredentials:true
+            })
+            return cart;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    // delete the product from the cart 
+    async function deleteCartProduct(productdetails){
+        try {
+            const cart=await axios.delete("http://localhost:3000/cart/product/delete",{
+                data:productdetails,
                 withCredentials:true
             })
             return cart;
@@ -44,7 +57,7 @@ export const CartProvider=({children})=>{
         }
     }
     return(
-        <cartContext.Provider value={{fetchCartItems,AddItemsToCart,deleteCartProduct}}>
+        <cartContext.Provider value={{fetchCartItems,AddItemsToCart,decreaseItemsToCart,deleteCartProduct}}>
             {children}
         </cartContext.Provider>
     )

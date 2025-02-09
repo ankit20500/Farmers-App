@@ -11,7 +11,7 @@ import { userContext } from '../ContextApi/userContextApi';
 import { cartContext } from '../ContextApi/cartContext';
 
 function Cart(){
-    const {fetchCartItems,AddItemsToCart,deleteCartProduct}=useContext(cartContext);
+    const {fetchCartItems,AddItemsToCart,decreaseItemsToCart,deleteCartProduct}=useContext(cartContext);
     const {user}=useContext(userContext);
     const navigate=useNavigate();
     const [cart,setCart]=useState([]);
@@ -63,19 +63,31 @@ function Cart(){
     }
 
     async function handleDecreaseQuantity(product,quantity){
-        if(quantity>1){
-            quantity-=1;
-            const response=await AddItemsToCart({product,quantity});
-            setCart(response.data.data.items);
+        try {
+            if(quantity>1){
+                quantity-=1;
+                const response=await decreaseItemsToCart({product,quantity});
+                setCart(response.data.data.items);
+                toast(response.data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast(error.response.data.error.message);
         }
     }
     async function handleIncreaseQuantity(product,quantity){
-        quantity+=1;
-        const response=await AddItemsToCart({product,quantity});
-        setCart(response.data.data.items);
+        try {
+            quantity+=1;
+            const response=await AddItemsToCart({product,quantity});
+            setCart(response.data.data.items);
+            toast(response.data.message);
+        } catch (error) {
+            console.log(error);
+            toast(error.response.data.error.message);
+        }
     }
-    async function handleDelete(productId){
-        const response=await deleteCartProduct(productId);
+    async function handleDelete(productId,quantity){
+        const response=await deleteCartProduct({productId,quantity});
         setCart(response.data.data.items);
     }
 
@@ -100,7 +112,7 @@ function Cart(){
                                         <p>{item.product.productname}</p>
                                         <p>{item.product.stock>0?"In-Stock":"Out Of Stock"}</p>
                                         <p>₹{item.product.price}/kg</p>
-                                        <span onClick={()=>handleDelete(item.product._id)}><MdDeleteForever/></span>
+                                        <span onClick={()=>handleDelete(item.product._id,item.quantity)}><MdDeleteForever/></span>
                                     </div>
                                 </div>
                                 <div className='quantity-price-section'>

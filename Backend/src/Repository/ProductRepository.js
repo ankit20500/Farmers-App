@@ -32,7 +32,7 @@ export const findAllProductsRepo=async(category,subcategory)=>{
 export const findProductByIdRepo=async(id)=>{
     try {
         const response=await Products.find({_id:id});
-        return response;
+        return response[0];
     } catch (error) {
         throw error;
     }
