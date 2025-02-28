@@ -46,6 +46,8 @@ function ProudctDetails(){
                 console.log(error);
                 toast(error.response);
             }
+        }else{
+            toast("please login for this functionality");
         }
     }
 

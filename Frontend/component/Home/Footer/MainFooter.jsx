@@ -9,8 +9,6 @@ import { Link } from "react-router-dom";
 function MainFooter(){
     return (
         <>
-            <FirstFooter/>
-
             <footer className="LastFooter">
                 <div className="footer-container">
                     <IndividualPg poster={'COMPANY'} item1={'About Us'} item2={'Our Team'} item3={'Careers'}/>

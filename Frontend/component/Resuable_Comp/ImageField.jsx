@@ -1,7 +1,7 @@
-function ImageField({image}){
+function ImageField({image, alt}){
     return(
         <>
-            <img src={image} alt="image"/>
+            <img src={image} alt={alt}/>
         </>
     )
 }

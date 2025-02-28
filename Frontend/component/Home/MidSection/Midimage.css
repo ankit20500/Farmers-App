@@ -2,7 +2,7 @@
     overflow-x: hidden;
 }
 .image{
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     display: flex;
     height: auto;
     width: 98.5vw;

@@ -15,7 +15,12 @@
 .searchBar{
     position: relative;
 }
-.logo>b{
+/* .logo>b{
+    cursor: pointer;
+} */
+.logo{
+    height: 3rem;
+    width: 6rem;
     cursor: pointer;
 }
 
@@ -35,6 +40,9 @@
     border-radius: 5px;
     padding: 0 40px;
     cursor: pointer;
+}
+.searchBar>input:hover{
+    border: 1px solid rgb(169, 98, 195);
 }
 .name{
     display: flex;

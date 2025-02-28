@@ -37,7 +37,10 @@
     margin: 1rem 0px;
 }
 
-.signup-input>input{
+.signup-details input{
+    width: 90%;
+    border: 1px solid #ccc;
+    margin-top: 5px;
     padding: 5px 10px;
     outline: none;
     border:none;

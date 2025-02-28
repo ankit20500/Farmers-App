@@ -5,6 +5,7 @@ import EachComp from '../EachComp';
 import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { userContext } from '../../ContextApi/userContextApi';
+import InputField from '../../Resuable_Comp/InputField';
 
 function Login(){
     const navigate=useNavigate();
@@ -27,10 +28,19 @@ function Login(){
                     <p className='heading'>Login your account Here </p>
                     <div className='signup-details'>
                         
-                        <EachComp onChange={(e)=>setEmail(e.target.value)} name={'Enter your email'} type={'text'} placeholder={'example@domain.com'}/>
+                        <InputField
+                            onChange={(e)=>setEmail(e.target.value)}
+                            title={"Enter your email"}
+                            type={"text"}
+                            placeholder={"example@domain.com"}
+                        />
 
-                        <EachComp onChange={(e)=>{setPassword(e.target.value)}} name={'Password'} type={'password'} placeholder={'Enter your password'}/>
-
+                        <InputField
+                            onChange={(e)=>{setPassword(e.target.value)}}
+                            title={"Password"}
+                            type={"password"}
+                            placeholder={"Enter your password"}
+                        />
                         <Button onclick={handleLogin} value={'LOGIN'}/>
 
                         <p>You are new here? <Link to={'/auth/register'}>Signup</Link></p>

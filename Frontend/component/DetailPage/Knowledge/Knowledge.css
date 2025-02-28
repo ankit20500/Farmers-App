@@ -1,0 +1,89 @@
+.knowledge-container {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(to right, #f8f9fa, #e8f5e9);
+  }
+  
+  .knowledge-container h2 {
+    font-size: 2.5rem;
+    color: #2d6a4f;
+  }
+  
+  .knowledge-container p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .section {
+    margin-top: 40px;
+  }
+  
+  .section h3 {
+    font-size: 1.8rem;
+    color: #2d6a4f;
+    margin-bottom: 20px;
+  }
+  
+  /* Grid Layout */
+  .farming-section-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    height: 23rem;
+  }
+  
+  /* Farming Tips & Modern Tech Cards */
+  .farming-section-grid-cart {
+    background: white;
+    padding: 20px;
+    height: 20rem;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .farming-section-grid-cart:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .grid-card-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .farming-section-grid-cart h4 {
+    font-size: 1.3rem;
+    color: #2d6a4f;
+    margin-top: 10px;
+  }
+  
+  .farming-section-grid-cart p {
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Video Cards */
+  .video-card {
+    width: 300px;
+    text-align: center;
+  }
+  
+  .video-card iframe {
+    border-radius: 10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .farming-section-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

@@ -15,6 +15,12 @@ import ChangePassword from '../component/Auth/ChangePassword/HandlePassword'
 import Product from '../component/Products/Products'
 import ProudctDetails from '../component/Products/ProductDetails'
 import Cart from '../component/Cart/Cart'
+import About from '../component/DetailPage/AboutSection/AboutSection'
+import ServiceSection from '../component/DetailPage/ServiceSection/ServiceSection'
+import FarmerStories from '../component/DetailPage/Farmers_Review/FarmersReview'
+import KnowledgePage from '../component/DetailPage/Knowledge/Knowledge'
+import SupportPage from '../component/DetailPage/SupportSection/SupportSection'
+import LoanPage from '../component/DetailPage/LoanSection/LoanSection'
 
 function App() {
   return (
@@ -35,6 +41,12 @@ function App() {
               <Route path='/categories/:category/subCategory/:subCategory' element={<Product/>}/>
               <Route path='/product/:id' element={<ProudctDetails/>}/>
               <Route path='/user/cart' element={<Cart/>}/>
+              <Route path='/about' element={<About/>}/>
+              <Route path='/service' element={<ServiceSection/>}/>
+              <Route path='/farmers' element={<FarmerStories/>}/>
+              <Route path='/knowledge' element={<KnowledgePage/>}/>
+              <Route path='/support' element={<SupportPage/>}/>
+              <Route path='/loan' element={<LoanPage/>}/>
             </Routes>
           </Layout>
           </CartProvider>

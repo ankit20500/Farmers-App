@@ -7,6 +7,7 @@ import InputField from '../../Resuable_Comp/InputField';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { userContext } from '../../ContextApi/userContextApi';
+import logo from './logo.jpg';
 
 function Navbar() {
   const navigate=useNavigate();
@@ -35,7 +36,7 @@ function Navbar() {
 
   return (
     <div className='navbar'>
-        <div className='logo'><b onClick={()=>navigate("/")}>Ankit</b></div>
+        <img className='logo' onClick={()=>navigate("/")} src={logo}/>
 
         <div className='location name'>
           <span style={{ marginRight: "2px",}}  className='icon'><GrLocation /></span>

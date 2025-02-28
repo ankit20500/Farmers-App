@@ -23,11 +23,9 @@ export const AddItemsService=async(userId,productdetails)=>{
         if(existingItem){ // if product exist then increase the quantity
             // before increase the quantity check the stock of the product
             if(product.stock>existingItem.quantity){
-                console.log("true");
                 existingItem.quantity+=1; // existingItem.quantity=productdetails.quantity
             }
             else {
-                console.log("false");
                 throw {message:'product is out of stock'};
             }
         }else{
@@ -38,8 +36,6 @@ export const AddItemsService=async(userId,productdetails)=>{
         }
         // save the cart in the databse
         await cart.save();
-        product.stock-=1;
-        await product.save();
         return cart;
     } catch (error) {
         throw error;
@@ -50,15 +46,12 @@ export const AddItemsService=async(userId,productdetails)=>{
 export const decreaseItemsToCartService=async(userId,productdetails)=>{
     try {
         const cart=await getCartRepo(userId);
-        const product=await findProductByIdRepo(productdetails.product);
         cart.items.forEach(item=>{
             if(item.product._id.toString()===productdetails.product){
                 item.quantity-=1;
             }
         })
         await cart.save();
-        product.stock+=1;
-        await product.save();
         return cart;
     } catch (error) {
         throw error;
@@ -69,11 +62,8 @@ export const decreaseItemsToCartService=async(userId,productdetails)=>{
 export const deleteCartProductService=async(userId,productdetails)=>{
     try {
         const cart=await getCartRepo(userId);
-        const product=await findProductByIdRepo(productdetails.productId);
         cart.items=cart.items.filter(item=>item.product._id.toString()!=productdetails.productId);
         await cart.save();
-        product.stock+=productdetails.quantity;
-        await product.save();
         return cart;
     } catch (error) {
         throw error;
