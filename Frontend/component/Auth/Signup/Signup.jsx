@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../Resuable_Comp/Button';
 import InputField from '../../Resuable_Comp/InputField';
-import EachComp from '../EachComp';
 import './Signup.css'
 import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { userContext } from '../../ContextApi/userContextApi';
+import ImageField from '../../Resuable_Comp/ImageField';
 
 function Signup(){
     const navigate=useNavigate();
@@ -20,6 +20,7 @@ function Signup(){
             const obj={name,email,password};
             const response=await signupButton(obj);
             toast(response.data.message);
+            console.log(obj);
             navigate("/");
         } catch (error) {
             toast(error.response.data.message);
@@ -30,29 +31,57 @@ function Signup(){
     }
 
     return(
-        <div className='signup'>
-            <div className='banner'>
-                <div className='content'>
-                    <p className='heading'>Create your account Here </p>
-                    <div className='signup-details'>
+        <div className='register-user'>
+            <div className='register-banner'>
+                <ImageField 
+                    image={"./imageP.webp"}
+                    alt={'register-pg-image'}
+                />
+            </div>
 
-                        <EachComp onChange={(e)=>setName(e.target.value)} value={name} name={'Full Name'} type={'text'} placeholder={'Enter your name...'}/>
+            <div className='register-content'>
+                <ImageField 
+                    image={"./logoP.webp"}
+                    alt={'registr-pg-logo'}
+                />
+                <p className='register-content-heading'>WELCOME TO KRISHIMART</p>
+                <p className='register-content-disc'>Register an account</p>
+                <div className='register-content-details'>
                         
-                        <EachComp onChange={(e)=>setEmail(e.target.value)} value={email} name={'Email'} type={'text'} placeholder={'Example@domain.com'}/>
-                        
-                        <EachComp onChange={(e)=>setPassword(e.target.value)} value={password} name={'Password'} type={'password'} placeholder={'Enter your password...'}/>
+                    <InputField
+                        onChange={(e)=>setName(e.target.value)}
+                        title={"Name"}
+                        type={"text"}
+                        placeholder={"Enter your name"}
+                    />
+                    
+                    <InputField
+                        onChange={(e)=>setEmail(e.target.value)}
+                        title={"Email"}
+                        type={"text"}
+                        placeholder={"example@domain.com"}
+                    />
 
-                        <div className='checkbox'>
-                            <InputField type={'checkbox'}/>
-                            I agree the terms and condition.
-                        </div>
+                    <InputField
+                        onChange={(e)=>{setPassword(e.target.value)}}
+                        title={"Password"}
+                        type={"password"}
+                        placeholder={"Enter your password"}
+                    />
 
-                        <Button onclick={handleSubmitButton} value={'SUBMIT'}/>
-
-                        <p>Already have an account? <Link to={'/auth/login'}>Login</Link></p>
+                    <div className='register-pg-checkbox-and-forget'>
+                        <label className="register-content-checkbox">
+                            <InputField type="checkbox" />
+                            <span>Allow rules & regulations</span>
+                        </label>
                     </div>
+                    <Button onclick={handleSubmitButton} value={'REGISTER'}/>
 
+                    <p className='register-pg-register'>Already have an account? 
+                        <Link to={'/auth/login'} className='register-pg-register-btn'>Login</Link>
+                    </p>
                 </div>
+
             </div>
         </div>
     )
