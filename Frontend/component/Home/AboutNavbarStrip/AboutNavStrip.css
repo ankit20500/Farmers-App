@@ -6,6 +6,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(128, 120, 120,0.5);
 }
 
 .aboutStrip-container-value {

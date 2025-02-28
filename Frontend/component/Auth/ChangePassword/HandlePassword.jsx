@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import Button from '../../Resuable_Comp/Button.jsx';
-import EachComp from '../EachComp.jsx';
 import './HandlePassword.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { userContext } from '../../ContextApi/userContextApi.jsx';
+import InputField from '../../Resuable_Comp/InputField.jsx';
 
 function ChangePassword(){
     const {changePassword}=useContext(userContext);
@@ -27,14 +27,14 @@ function ChangePassword(){
     return(
         <div className='password-section'>
             <div className='password-subsection'>
-                <EachComp 
+                <InputField 
                     onChange={(e)=>setPrevPassword(e.target.value)} 
                     name={'Previous Password'} 
                     type={'password'} 
                     placeholder={'previous password...'}
                     />
 
-                <EachComp
+                <InputField
                     onChange={(e)=>setNewPassword(e.target.value)} 
                     name={'New Password'} 
                     type={'password'} 

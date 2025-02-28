@@ -42,7 +42,7 @@ function Product() {
                             <ImageField image={item.image}/>
                             <p>{item.productname}</p>
                             <p>{item.category}</p>
-                            <p>₹{item.price}{'/kg'}</p>
+                            <p>₹{item.price}</p>
                             <div><Stars rating={item.ratings}/></div>
                         </div>
                     ))

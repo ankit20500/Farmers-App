@@ -34,14 +34,14 @@ function Signup(){
         <div className='register-user'>
             <div className='register-banner'>
                 <ImageField 
-                    image={"./imageP.webp"}
+                    image={"https://raw.githubusercontent.com/ankit20500/Farmers-App/refs/heads/main/Frontend/component/Auth/imageP.webp"}
                     alt={'register-pg-image'}
                 />
             </div>
 
             <div className='register-content'>
                 <ImageField 
-                    image={"./logoP.webp"}
+                    image={"https://raw.githubusercontent.com/ankit20500/Farmers-App/refs/heads/main/Frontend/component/Auth/logoP.webp"}
                     alt={'registr-pg-logo'}
                 />
                 <p className='register-content-heading'>WELCOME TO KRISHIMART</p>
@@ -72,7 +72,7 @@ function Signup(){
                     <div className='register-pg-checkbox-and-forget'>
                         <label className="register-content-checkbox">
                             <InputField type="checkbox" />
-                            <span>Allow rules & regulations</span>
+                            <span>Allow terms & conditions</span>
                         </label>
                     </div>
                     <Button onclick={handleSubmitButton} value={'REGISTER'}/>

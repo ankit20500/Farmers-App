@@ -25,13 +25,13 @@ function Login(){
         <div className='login'>
             <div className='login-banner'>
                 <ImageField 
-                    image={'./imageP.webp'}
+                    image={'https://raw.githubusercontent.com/ankit20500/Farmers-App/refs/heads/main/Frontend/component/Auth/imageP.webp'}
                     alt={'login-pg-image'}
                     />
             </div>
 
             <div className='login-content'>
-                <ImageField image={'./logoP.webp'}
+                <ImageField image={'https://raw.githubusercontent.com/ankit20500/Farmers-App/refs/heads/main/Frontend/component/Auth/logoP.webp'}
                 alt={'login-pg-logo'}
                 />
                 <p className='login-content-heading'>WELCOME TO KRISHIMART</p>

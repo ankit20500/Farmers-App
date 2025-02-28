@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import EachComp from '../Auth/EachComp';
 import Button from '../Resuable_Comp/Button';
 import './Profile.css'
 import { useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import { userContext } from '../ContextApi/userContextApi';
+import InputField from '../Resuable_Comp/InputField';
 
 function Profile(){
     const {user,UserLogout,deleteUser,updateUserProfile}=useContext(userContext);
@@ -53,19 +53,19 @@ function Profile(){
                 </div>
 
                 <div className='profile-details'>
-                    <EachComp  
+                    <InputField  
                         name={'Full Name'} 
                         value={name} 
                         readOnly={!isEditing}
                         onChange={(e)=>setName(e.target.value)}
                         />
 
-                    <EachComp  
+                    <InputField  
                         name={'Email'} 
                         value={user.data.email} 
                         readOnly={!isEditing}/>
 
-                    <EachComp 
+                    <InputField 
                         name={'Mobile Number'} 
                         value={contactNumber} 
                         readOnly={!isEditing}
