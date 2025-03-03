@@ -17,9 +17,9 @@ export const createUserController=async function(req,res){
         // store this token in cookies
         res.cookie('authToken',token,{
             httpOnly:true,
-            secure:false,
-            sameSite:"Lax",
-            maxAge:72 * 60 * 60 * 1000
+            secure:true,
+            sameSite:"none",
+            maxAge:new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
         })
         return res.status(200).json({
             status:true,

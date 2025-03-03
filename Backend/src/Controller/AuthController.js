@@ -12,8 +12,9 @@ export const userLoginController=async(req,res)=>{
         // store this token in browser's cookie and this cookies is not seen anyone bcz it is httpOnly cookies
         res.cookie('authToken',response,{
             httpOnly:true,
-            secure:false,
-            maxAge:72 * 60 * 60 * 1000
+            secure:true,
+            sameSite:"none",
+            maxAge:new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
         });
         
         // when token comes then according to token we return user details which is works as

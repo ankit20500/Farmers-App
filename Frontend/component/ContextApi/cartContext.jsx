@@ -11,7 +11,7 @@ export const CartProvider=({children})=>{
     // fetch the cart items 
     async function fetchCartItems(userId){
         try {
-            const response=await axios.post("http://localhost:3000/cart",{userId},{
+            const response=await axios.post("https://farmers-app-lxfi.onrender.com/cart",{userId},{
                 withCredentials:true
             })
             return response;
@@ -23,7 +23,7 @@ export const CartProvider=({children})=>{
     // Add the items in the cart when user add the items in the cart
     async function AddItemsToCart(productDetails){
         try {
-            const cart=await axios.put("http://localhost:3000/cart/add/items",productDetails,{
+            const cart=await axios.put("https://farmers-app-lxfi.onrender.com/cart/add/items",productDetails,{
                 withCredentials:true
             })
             return cart;
@@ -35,7 +35,7 @@ export const CartProvider=({children})=>{
     // decrease the items from cart if user will decrease the no. of products
     async function decreaseItemsToCart(productDetails){
         try {
-            const cart=await axios.put("http://localhost:3000/cart/decrease/items",productDetails,{
+            const cart=await axios.put("https://farmers-app-lxfi.onrender.com/cart/decrease/items",productDetails,{
                 withCredentials:true
             })
             return cart;
@@ -47,7 +47,7 @@ export const CartProvider=({children})=>{
     // delete the product from the cart 
     async function deleteCartProduct(productdetails){
         try {
-            const cart=await axios.delete("http://localhost:3000/cart/product/delete",{
+            const cart=await axios.delete("https://farmers-app-lxfi.onrender.com/cart/product/delete",{
                 data:productdetails,
                 withCredentials:true
             })

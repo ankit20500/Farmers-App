@@ -11,7 +11,7 @@ export const ProductProvider=({children})=>{
     // fetch the product's data with category and subCategory
     async function fetchProduct(category,subCategory){
         try{
-            const response=await axios.get(`http://localhost:3000/product/products?category=${category}&subcategory=${subCategory}`,{},{
+            const response=await axios.get(`https://farmers-app-lxfi.onrender.com/product/products?category=${category}&subcategory=${subCategory}`,{},{
                 withCredentials:true
             });
             return response;
@@ -23,7 +23,7 @@ export const ProductProvider=({children})=>{
     // fetch the product's data with id
     async function fetchProductById(id){
         try {
-            const response=await axios.get(`http://localhost:3000/product/details/${id}`);
+            const response=await axios.get(`https://farmers-app-lxfi.onrender.com/product/details/${id}`);
             return response;
         } catch (error) {
             throw error;
