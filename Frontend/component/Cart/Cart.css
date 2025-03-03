@@ -193,16 +193,18 @@
 
 .empty-cart{
     font-size: 8rem;
-    color: tomato;
+    color: #2aa26c;
 }
 .cart-not-login>button{
     padding: 0.3rem 2rem;
     margin-top: 0.2rem;
-    background-color: rgba(29, 27, 27, 0.922);
+    background-color: #15623f;
     border: none;
     color: white;
     cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.2s ease-in-out;
 }
 .cart-not-login>button:hover{
-    background-color: rgba(29, 27, 27, 1);
+    background-color: #165337;
 }

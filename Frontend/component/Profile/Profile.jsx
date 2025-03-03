@@ -54,31 +54,30 @@ function Profile(){
 
                 <div className='profile-details'>
                     <InputField  
-                        name={'Full Name'} 
+                        title={'Full Name'} 
                         value={name} 
                         readOnly={!isEditing}
                         onChange={(e)=>setName(e.target.value)}
                         />
 
                     <InputField  
-                        name={'Email'} 
+                        title={'Email'} 
                         value={user.data.email} 
                         readOnly={!isEditing}/>
 
                     <InputField 
-                        name={'Mobile Number'} 
+                        title={'Mobile Number'} 
                         value={contactNumber} 
                         readOnly={!isEditing}
                         onChange={(e)=>setContactNumber(e.target.value)}    
                         />
 
-                    <label htmlFor="comments">Comments:</label><br/>
+                    <label htmlFor="comments">Comments:</label>
                     <textarea 
                         id="comments" 
                         name="comments" 
-                        rows="3" cols="20" 
+                        rows="3" cols="42" 
                         defaultValue="Enter your comments here" />
-                    <br/>
 
                     <Button onclick={handleEditprofile} value={isEditing?'Set Profile':'Edit Profile'}/>
                 </div>

@@ -29,14 +29,14 @@ function ChangePassword(){
             <div className='password-subsection'>
                 <InputField 
                     onChange={(e)=>setPrevPassword(e.target.value)} 
-                    name={'Previous Password'} 
+                    title={'Previous Password'} 
                     type={'password'} 
                     placeholder={'previous password...'}
                     />
 
                 <InputField
                     onChange={(e)=>setNewPassword(e.target.value)} 
-                    name={'New Password'} 
+                    title={'New Password'} 
                     type={'password'} 
                     placeholder={'new password...'}
                     />

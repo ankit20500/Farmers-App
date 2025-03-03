@@ -99,13 +99,13 @@
 }
 
 .footer-column ul li a {
-    color: #989494;
+    color: #1f4635;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-column ul li a:hover {
-    color: #7a3a3a;
+    color: #307b59;
 }
 
 .social-media {

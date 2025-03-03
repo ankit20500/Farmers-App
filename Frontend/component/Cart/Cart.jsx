@@ -58,6 +58,7 @@ function Cart(){
                 <MdRemoveShoppingCart className='empty-cart'/>
                 <p>Your Cart is Empty</p>
                 <p>First add the items in your cart</p>
+                <Button onclick={()=>navigate("/")} value={'ADD ITEMS'}/>
             </div>
         )
     }

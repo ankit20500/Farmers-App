@@ -3,8 +3,10 @@ import "./AboutSection.css";
 import BenifitSection from "./BenifitSection";
 import StateSection from "./StateSection";
 import Button from "../../Resuable_Comp/Button";
+import {useNavigate} from 'react-router-dom'
 
 const About = () => {
+  const navigate=useNavigate();
   return (
     <div className="about-container">
       {/* Hero Section */}
@@ -60,7 +62,7 @@ const About = () => {
       <div className="cta">
         <h2>Join KrishiMart Today!</h2>
         <p>Start buying and selling directly with trust and transparency.</p>
-        <Button className="cta-button" value={"Get Started"} />
+        <Button className="cta-button" onclick={()=>navigate("/auth/register")} value={"Get Started"} />
       </div>
       
       {/* Trust & Statistics Section */}
