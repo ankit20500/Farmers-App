@@ -13,6 +13,7 @@ function Product() {
     const { category, subCategory } = useParams(); // Extracting parameters
     const {fetchProduct}=useContext(productContext);
     const [product,setProduct]=useState([]);
+    const [loader,setLoader]=useState(true);
     useEffect(()=>{
         async function fetchData(){
             try {
@@ -20,7 +21,9 @@ function Product() {
                 const formattedSubCategory = subCategory.replace(/_/g, ' '); // Convert "_" to " "
                 const response=await fetchProduct(formattedCategory,formattedSubCategory);
                 setProduct(response.data.data);
+                setLoader(false);
             } catch (error) {
+                setLoader(false);
                 toast(error.response.message);
             }
         }
@@ -28,7 +31,7 @@ function Product() {
     },[category, subCategory, fetchProduct])
 
     // if product is null then spin will be shown
-    if(!product){
+    if(loader){
         return <Loader/>
     }
 
