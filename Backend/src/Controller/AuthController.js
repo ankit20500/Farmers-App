@@ -1,31 +1,16 @@
-import { JWT_SECRET } from "../config/ServerConfig.js";
 import { findUser } from "../Repository/UserRepository.js";
 import { userLoginService, userLogoutService, } from "../service/AuthService.js";
-import jwt from 'jsonwebtoken';
 
 // login the user
 export const userLoginController=async(req,res)=>{
     try {
         const payload=req.body;
-        const response=await userLoginService(payload);
-
-        // store this token in browser's cookie and this cookies is not seen anyone bcz it is httpOnly cookies
-        res.cookie('authToken',response,{
-            httpOnly:true,
-            secure:true,
-            sameSite:"none",
-            maxAge:new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-        });
-        
-        // when token comes then according to token we return user details which is works as
-        // when login then it shows profile
-        const decode=jwt.verify(response,JWT_SECRET);
-        const user=await findUser(decode.email);
+        const response=await userLoginService(payload,res);
 
         return res.status(200).json({
             success:true,
             message:'logged in successfully',
-            data:user,
+            data:response,
             error:{}
         })
     } catch (error) {

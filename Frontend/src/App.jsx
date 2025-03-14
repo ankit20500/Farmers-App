@@ -12,7 +12,7 @@ import { ProductProvider } from '../component/ContextApi/productContext'
 import { CartProvider } from '../component/ContextApi/cartContext'
 import { ToastContainer, Bounce } from 'react-toastify';
 import ChangePassword from '../component/Auth/ChangePassword/HandlePassword'
-import Product from '../component/Products/Products'
+import Product from '../component/Products/AllProducts'
 import ProudctDetails from '../component/Products/ProductDetails'
 import Cart from '../component/Cart/Cart'
 import About from '../component/DetailPage/AboutSection/AboutSection'
@@ -23,6 +23,7 @@ import SupportPage from '../component/DetailPage/SupportSection/SupportSection'
 import LoanPage from '../component/DetailPage/LoanSection/LoanSection'
 
 function App() {
+  
   return (
     <>
       <BrowserRouter>

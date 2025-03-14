@@ -64,14 +64,15 @@
 
 /* product details css start */
 .product-details-home {
-    height: 80vh;
+    height: auto;
     width: 87vw;
     margin: 2rem 4rem;
 }
 
 .product-subHome {
-    padding: 2rem 4rem;
+    /* padding: 2rem 4rem; */
     display: flex;
+    flex-wrap: nowrap;
     margin: 0 2rem;
     gap: 2rem;
 }
@@ -81,12 +82,15 @@
 }
 
 .product-details-left {
-    height: 23rem;
+    height: 19rem;
+    width: 16rem;
+    margin: 1rem 0rem 0rem 4rem;
+    border: 1px solid rgba(98, 94, 94, 0.4);
 }
 
 .product-details-left > img {
-    height: 20rem;
-    width: 25rem;
+    height: 18rem;
+    width: 16rem;
 }
 
 .product-details-right {
@@ -111,6 +115,17 @@
     font-size: x-large;
 }
 
+.product-details-right>button{
+    padding: 0.4rem;
+    background-color: #1a784e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+.product-details-right>button:hover{
+    background-color: #135c3b;
+}
 
 /* Styling the price and stock in a box-like view */
 .product-details-right-2 {
@@ -155,9 +170,77 @@
 }
 
 .product-details-right-2>button {
-    background-color: rgb(32, 31, 31);
+    background-color: #1a784e;
+}
+.product-details-right-2>button:hover {
+    background-color: #135c3b;
 }
 
+@media (max-width: 1100px) {
+    .product-subHome {
+        flex-wrap: wrap; /* ✅ Allow wrapping */
+        justify-content: center;
+    }
+
+    .product-details-right-2 {
+        width: 100%; /* ✅ Full width le lega */
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 850px) {
+    .product-details-left {
+        width: 15rem;
+        margin: 0rem;
+    }
+    
+    .product-details-left > img {
+        width: 14rem;
+    }
+    
+    .product-details-right {
+        width: 18rem;
+    }
+}
+@media (max-width: 720px) {
+    .product-details-left {
+        width: 14rem;
+    }
+    
+    .product-details-left > img {
+        width: 14rem;
+    }
+    
+    .product-details-right {
+        width: 17rem;
+    }
+}
+
+/* ✅ 700px se chhoti screen pe photo, details, price 3no column layout me aayenge */
+@media (max-width: 700px) {
+    .product-subHome {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-details-left,
+    .product-details-right,
+    .product-details-right-2 {
+        width: 80%;
+        margin: 0px;
+        text-align: center;
+    }
+
+    .product-details-right > div {
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-subHome{
+        margin: 0;
+    }
+}
+
+/* when no product is there then its css */
 .no-product{
     width: 28rem;
     height: 60vh;
@@ -173,4 +256,281 @@
     font-size: 5rem;
     color: tomato;
 }
+
+
+
+
+/* review kaa cart section */
+.review-heading>span{
+    height: 2.8rem;
+    width: 15rem;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.677);
+    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.2);
+    border-bottom: 1.5px solid gray;
+}
+
+/* .review-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+  
+.review-card {
+    margin: 1rem auto;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 700px;
+    border: 1px solid rgba(89, 85, 85, 0.4);
+}
+
+.review-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.review-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.review-name-star-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-name-star-container>div{
+    display: flex;
+    gap: 2rem;
+}
+
+.review-rating-class{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.review-ratings{
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.review-ratings.selected{
+    color: rgb(223, 148, 9)
+}
+
+.review-text {
+    flex: 1;
+}
+.review-text>button{
+    background-color: #1a784e;
+    border: none;
+    padding: 0.4rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+.review-text>button:hover{
+    background-color: #135c3b;
+}
+  
+.review-description {
+    font-size: 16px;
+    color: #666;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.btn-see-more-less{
+    color: #09814b;
+    cursor: pointer;
+}
+  
+.review-author {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+@media (max-width: 670px) {
+    .review-card {
+        width: 80%; 
+        padding: 15px;
+        margin-left: 0rem;
+    }
+
+    .review-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .review-avatar img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .review-name-star-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .review-author {
+        font-size: 16px;
+    }
+
+    .review-rating-class {
+        justify-content: center;
+    }
+
+    .review-ratings {
+        font-size: 1.2rem;
+    }
+
+    .review-text {
+        text-align: center;
+    }
+
+    .review-text > button {
+        font-size: 14px;
+        padding: 0.3rem;
+    }
+
+    .review-description {
+        font-size: 14px;
+    }
+}
+
+@media(max-width:400px){
+    .review-card {
+        width: 70%; 
+        margin-left: 0.5rem;
+    }
+}
+  
+
+/* if no review then  */
+.no-review{
+    height: 10rem;
+    margin: auto;
+    display: flex;
+    margin-top: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.no-review-icon{
+    font-size: 5rem;
+    color: #135c3b;
+}
+.no-review>p{
+    font-size: x-large;
+}
+
+
+
+/* Container for background blur when modal is open */
+.blur-background {
+    position: relative;
+}
+
+
+.blur-background::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    backdrop-filter: blur(5px); /* Blur effect */
+    z-index: 10; /* Ensures it's behind the modal */
+}
+
+/* Review kaa input field */
+.review-input-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 20; /* Ensures it appears above the blurred background */
+}
+
+.review-input-heading{
+    color: #323030;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-bottom: 1px solid black;
+}
+
+.review-select-star-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem;
+    gap: 0.3rem;
+  }
+  
+  .review-stars-wrapper {
+    display: flex;
+    gap: 0.3rem;
+  }
+  
+  .review-select-star {
+    font-size: 1.8rem;
+    color: #d1d5db; /* Default gray color */
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  /* 🔥 Star will turn yellow when selected or hovered */
+  .review-select-star.selected {
+    color: #facc15;
+  }
+  
+
+
+.review-input-modal textarea {
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    resize: none;
+    font-size: 16px;
+}
+
+.review-input-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.review-input-buttons>button{
+    padding: 0.4rem;
+    background-color: #1a784e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+.review-input-buttons>button:hover{
+    background-color: #135c3b;
+}
+
 

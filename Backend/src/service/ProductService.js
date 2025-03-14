@@ -47,3 +47,26 @@ export const findProductsService=async(input)=>{
         throw error;
     }
 }
+
+// create the review for any product
+export const writeReviewService=async(userId,comment,rating,productId)=>{
+    try {
+        const product=await findProductByIdRepo(productId);
+        const review=product.reviews.find((user)=>user.user._id.toString()===userId);
+        if(review){  // if review is already present then replace the comment and rating
+            review.comment=comment;
+            review.rating=rating;
+        }else{  // add the new review directly into the product reviews array
+            product.reviews.push({user:userId,comment,rating});
+        }
+
+        // update the totalRating of the product
+        const totalRating=product.reviews.reduce((sum,curr)=>sum+curr.rating,0);
+        product.ratings=totalRating/product.reviews.length;
+        // save the product
+        await product.save();
+        return product;
+    } catch (error) {
+        throw error;
+    }
+}

@@ -31,8 +31,9 @@ export const findAllProductsRepo=async(category,subcategory)=>{
 // find product details by id
 export const findProductByIdRepo=async(id)=>{
     try {
-        const response=await Products.find({_id:id});
-        return response[0];
+        const response=await Products.findOne({_id:id})
+                            .populate("reviews.user","name");
+        return response;
     } catch (error) {
         throw error;
     }

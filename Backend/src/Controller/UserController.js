@@ -1,4 +1,5 @@
 import { JWT_SECRET } from '../config/ServerConfig.js';
+import { findUsersProfileRepo } from '../Repository/UserRepository.js';
 import { changePasswordService, createUserService, deleteUserService, updateUserService } from '../service/UserService.js';
 import { errorHandler, successHandler } from '../Utility/Handler.js';
 import jwt from 'jsonwebtoken';
@@ -70,6 +71,17 @@ export const deleteUserController=async function(req,res){
             sameSite:"strict"
         });
         return successHandler(res,200,"user delete successfully",response);
+    } catch (error) {
+        return errorHandler(res,404,error.message,error);
+    }
+}
+
+// find user's profile
+export const findUsersProfileController=async function (req,res) {
+    try {
+        const id=req.params.id;
+        const user=await findUsersProfileRepo(id);
+        return successHandler(res,200,"user fetched successfully",user);
     } catch (error) {
         return errorHandler(res,404,error.message,error);
     }

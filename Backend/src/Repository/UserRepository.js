@@ -65,3 +65,13 @@ export const deleteUserRepo=async(id)=>{
         throw error;
     }
 }
+
+// find user details by id
+export const findUsersProfileRepo=async(id)=>{
+    try {
+        const user=await User.findById(id);
+        return user;
+    } catch (error) {
+        throw error;
+    }
+}

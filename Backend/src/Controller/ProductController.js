@@ -1,4 +1,4 @@
-import { createProductService, findAllProductsService, findProductByIdService, findProductsService } from "../service/ProductService.js"
+import { createProductService, findAllProductsService, findProductByIdService, findProductsService, writeReviewService } from "../service/ProductService.js"
 import { errorHandler, successHandler } from "../Utility/Handler.js";
 
 // create products
@@ -45,5 +45,18 @@ export const findProductsController=async(req,res)=>{
         return successHandler(res,201,"product fetch successfully",product);
     } catch (error) {
         return errorHandler(res,404,'something went wrong for fetching products',error);
+    }
+}
+
+
+// write the product review 
+export const writeReviewController=async(req,res)=>{
+    try {
+        const {productId,comment,rating}=req.body;
+        const {id}=req.user;
+        const response=await writeReviewService(id,comment,rating,productId);
+        return successHandler(res,201,"review add successfully",response);
+    } catch (error) {
+        return errorHandler(res,401,"something went wrong for writing the review",error);
     }
 }

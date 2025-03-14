@@ -14,6 +14,7 @@ function Product() {
     const {fetchProduct}=useContext(productContext);
     const [product,setProduct]=useState([]);
     const [loader,setLoader]=useState(true);
+    
     useEffect(()=>{
         async function fetchData(){
             try {

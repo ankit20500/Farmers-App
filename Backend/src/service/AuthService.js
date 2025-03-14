@@ -5,7 +5,7 @@ import { JWT_SECRET } from "../config/ServerConfig.js";
 
 
 // login logics
-export const userLoginService=async(payload)=>{
+export const userLoginService=async(payload, res)=>{
     const email=payload.email;
     const password=payload.password;
     // 1. check that if the user is exist or not with this password
@@ -27,7 +27,15 @@ export const userLoginService=async(payload)=>{
         {expiresIn:'72h'}
     )
     
-    return token;
+    // 4. store this token in browser's cookie and this cookies is not seen anyone bcz it is httpOnly cookies
+    res.cookie('authToken',token,{
+        httpOnly:true,
+        secure:true,
+        sameSite:"none",
+        maxAge:new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    });
+
+    return user;
 }
 
 // logout logics

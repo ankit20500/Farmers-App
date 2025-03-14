@@ -92,6 +92,11 @@ function Cart(){
         setCart(response.data.data.items);
     }
 
+    // function for extracting the numeric value from price (price=500/kg)
+    function extractPrice(priceString) {
+        return parseFloat(priceString); // This will extract only the numeric value
+    }
+
     return(
         <div className='cart-home'>
             <div className='cart-heading'>
@@ -112,7 +117,7 @@ function Cart(){
                                     <div className='cart-items-content'>
                                         <p>{item.product.productname}</p>
                                         <p>{item.product.stock>0?"In-Stock":"Out Of Stock"}</p>
-                                        <p>₹{item.product.price}/kg</p>
+                                        <p>₹{item.product.price}</p>
                                         <span onClick={()=>handleDelete(item.product._id,item.quantity)}><MdDeleteForever/></span>
                                     </div>
                                 </div>
@@ -122,7 +127,7 @@ function Cart(){
                                         <span>{item.quantity}</span>
                                         <Button onclick={()=>handleIncreaseQuantity(item.product._id,item.quantity)} value={'+'}/>
                                     </div>
-                                    <span>₹ {item.product.price*item.quantity}</span>
+                                    <span>₹ {extractPrice(item.product.price)*item.quantity}</span>
                                 </div>
                             </div>
                             <hr/>
@@ -135,7 +140,7 @@ function Cart(){
                             quantity={cart.reduce((total,item)=>total+item.quantity,0)} 
                             items={"items"} 
                             symbol={'₹'} 
-                            price={cart.reduce((total,item)=>total+item.product.price*item.quantity,0)}
+                            price={cart.reduce((total,item)=>total+extractPrice(item.product.price)*item.quantity, 0)}
                         />          
                 <hr/>
 
@@ -145,7 +150,7 @@ function Cart(){
 
                 {/* Total amount calculate */}
                 <CartPrice subtotal={"Total"}  symbol={'₹'} 
-                            price={cart.reduce((total,item)=>total+item.product.price*item.quantity,0)+40}
+                            price={cart.reduce((total,item)=>total+extractPrice(item.product.price)*item.quantity, 0)+40}
                         />
                 <hr/>
 

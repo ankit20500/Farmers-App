@@ -1,17 +1,20 @@
 import { createContext } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 export const productContext=createContext();
 
 export const ProductProvider=({children})=>{
-    const navigate=useNavigate();
 
     // fetch the product's data with category and subCategory
     async function fetchProduct(category,subCategory){
         try{
-            const response=await axios.get(`https://farmers-app-lxfi.onrender.com/product/products?category=${category}&subcategory=${subCategory}`,{},{
+            // for production related request
+            // const response=await axios.get(`https://farmers-app-lxfi.onrender.com/product/products?category=pesticides&subcategory=herbicides`,{},{
+            //     withCredentials:true
+            // });
+
+            // for localhost request
+            const response=await axios.get(`http://localhost:3000/product/products?category=${category}&subcategory=${subCategory}`,{},{
                 withCredentials:true
             });
             return response;
@@ -23,7 +26,23 @@ export const ProductProvider=({children})=>{
     // fetch the product's data with id
     async function fetchProductById(id){
         try {
-            const response=await axios.get(`https://farmers-app-lxfi.onrender.com/product/details/${id}`);
+            // for production related request
+            //const response=await axios.get(`https://farmers-app-lxfi.onrender.com/product/details/${id}`);
+
+            // for localhost request
+            const response=await axios.get(`http://localhost:3000/product/details/${id}`);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    // writing the review of the product
+    async function writeProductReview(obj){
+        try {
+            const response=await axios.post("http://localhost:3000/product/create/review",obj,{
+                withCredentials:true
+              });
             return response;
         } catch (error) {
             throw error;
@@ -31,7 +50,7 @@ export const ProductProvider=({children})=>{
     }
 
     return(
-        <productContext.Provider value={{fetchProduct,fetchProductById}}>
+        <productContext.Provider value={{fetchProduct,fetchProductById,writeProductReview}}>
             {children}
         </productContext.Provider>
     )

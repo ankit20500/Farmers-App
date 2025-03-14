@@ -40,7 +40,7 @@ const productSchema=new mongoose.Schema({
         required:[true,"product image is required"]
     },
     reviews:[
-        {
+        new mongoose.Schema({
             user:{
                 type:mongoose.Schema.Types.ObjectId,
                 ref:"User",
@@ -54,7 +54,7 @@ const productSchema=new mongoose.Schema({
                 type:Number,
                 required:[true,"please rate the product"]
             }
-        }
+        },{timestamps:true})
     ]
 },{timestamps:true});
 
