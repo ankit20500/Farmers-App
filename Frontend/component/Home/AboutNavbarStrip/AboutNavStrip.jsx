@@ -7,13 +7,13 @@ function AboutNavStrip(){
    
     return(
         <div className='AboutStrip-container'>
-            <ReusableSection onclick={()=>navigate("/about")} value={'About'}/>
-            <ReusableSection onclick={()=>navigate("/service")} value={'Services'}/>
-            <ReusableSection onclick={()=>navigate("/sell")} value={'Sell'}/>
-            <ReusableSection onclick={()=>navigate("/loan")} value={'Loan'}/>
-            <ReusableSection onclick={()=>navigate("/farmers")} value={'Trusted By Farmers'}/>
-            <ReusableSection onclick={()=>navigate('/knowledge')} value={'Knowledge'}/>
-            <ReusableSection onclick={()=>navigate("/support")} value={'Support'}/>
+            <ReusableSection onclick={() => navigate("/about")} value={'About'} path="/about" />
+            <ReusableSection onclick={() => navigate("/service")} value={'Services'} path="/service" />
+            <ReusableSection onclick={() => navigate("/sell")} value={'Sell'} path="/sell" />
+            <ReusableSection onclick={() => navigate("/loan")} value={'Loan'} path="/loan" />
+            <ReusableSection onclick={() => navigate("/farmers")} value={'Trusted By Farmers'} path="/farmers" />
+            <ReusableSection onclick={() => navigate("/knowledge")} value={'Knowledge'} path="/knowledge" />
+            <ReusableSection onclick={() => navigate("/support")} value={'Support'} path="/support" />
         </div>
     )
 }

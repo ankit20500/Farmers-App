@@ -31,21 +31,43 @@ const farmers = [
   },
 ];
 
+const farmer_details={
+  url:"./farmer.webp",
+  story:"Krishi-Mart Farmer App is a onestop platform that provides multiple services, including frequent crop reminders, voice calls in regional languages, crop advisories, weather reports, local mandi rates, etc. to over 1.4 million farmers in 12 major agri-based states in India.\n\n Farmers can use the App to get direct consultations from Agri-experts on chemical dosage, crop health advice, and the use of high-quality input products. Purchase and sale of input or output products can also be done through the app with convenience. \n\n Farmers can avail customised advisory services based on real-time information through the app right at their fingertips."
+
+}
+
 const FarmerStories = () => {
   return (
-    <div className="stories-container">
-      <h2>🌾 Farmer Stories</h2>
+    <div>
+      <div className="stories-heading-container">
+        <div className="farmers-story-content">
+          <h2>🌾Stories for Farmers</h2><br/><br/>
+          <p>{farmer_details.story.split("\n").map((line, idx) => (
+            <React.Fragment key={idx}>
+                {line}
+                <br />
+            </React.Fragment>
+        ))}</p>
+        </div>
+        <div className="farmers-story-img">
+          <img src={"https://agrevolution.in/assets/images/farmer-solution/farmer.webp"}/>
+        </div>
+      </div>
+
+      <div className="stories-container">
       <p>Real stories from real farmers who changed their lives with KrishiMart.</p>
 
-      <div className="stories-grid">
-        {farmers.map((farmer, index) => (
-          <div key={index} className="story-card">
-            <ImageField image={farmer.image} alt={farmer.name} className="farmer-image" />
-            <h3>{farmer.name}</h3>
-            <p className="location">📍 {farmer.location}</p>
-            <p className="farmer-story">{farmer.story}</p>
-          </div>
-        ))}
+        <div className="stories-grid">
+          {farmers.map((farmer, index) => (
+            <div key={index} className="story-card">
+              <ImageField image={farmer.image} alt={farmer.name} className="farmer-image" />
+              <h3>{farmer.name}</h3>
+              <p className="location">📍 {farmer.location}</p>
+              <p className="farmer-story">{farmer.story}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

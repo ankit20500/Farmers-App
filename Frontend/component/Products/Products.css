@@ -261,6 +261,9 @@
 
 
 /* review kaa cart section */
+.review-heading{
+    margin-top: 2rem;
+}
 .review-heading>span{
     height: 2.8rem;
     width: 15rem;

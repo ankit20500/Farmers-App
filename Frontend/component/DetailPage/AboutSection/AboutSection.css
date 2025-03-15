@@ -132,21 +132,28 @@
 }
 
 /* Call to Action */
-.cta {
+.about-join-section {
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
-.cta h2 {
+.about-join-img-section>img{
+  height: 17rem;
+}
+
+.about-join-content-section h2 {
   font-size: 2.5rem;
   color: #2d6a4f;
+  margin-top: 2rem;
 }
 
-.cta p {
+.about-join-content-section p {
   font-size: 1.3rem;
   margin-top: 10px;
 }
 
-.cta button{
+.about-join-content-section button{
   margin-top: 15px;
   background-color: #2d6a4f;
   color: white;
@@ -158,7 +165,7 @@
   transition: 0.3s;
 }
 
-.cta button:hover {
+.about-join-content-section button:hover {
   background-color: #1b4633;
 }
 

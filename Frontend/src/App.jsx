@@ -21,6 +21,7 @@ import FarmerStories from '../component/DetailPage/Farmers_Review/FarmersReview'
 import KnowledgePage from '../component/DetailPage/Knowledge/Knowledge'
 import SupportPage from '../component/DetailPage/SupportSection/SupportSection'
 import LoanPage from '../component/DetailPage/LoanSection/LoanSection'
+import { AddressProvider } from '../component/ContextApi/addressContext'
 
 function App() {
   
@@ -31,28 +32,30 @@ function App() {
         <ProductProvider>
         <CartProvider>
         <ScrollToTop/>
-          <Layout>
-            <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/auth/register' element={<Signup/>}/>
-              <Route path='/auth/login' element={<Login/>}/>
-              <Route path='/auth/user/profile' element={<Profile/>}/>
-              <Route path='/auth/user/change-password' element={<ChangePassword/>}/>
-              <Route path='/categories/:name' element={<ChooseCategory/>}/>
-              <Route path='/categories/:category/subCategory/:subCategory' element={<Product/>}/>
-              <Route path='/product/:id' element={<ProudctDetails/>}/>
-              <Route path='/user/cart' element={<Cart/>}/>
-              <Route path='/about' element={<About/>}/>
-              <Route path='/service' element={<ServiceSection/>}/>
-              <Route path='/farmers' element={<FarmerStories/>}/>
-              <Route path='/knowledge' element={<KnowledgePage/>}/>
-              <Route path='/support' element={<SupportPage/>}/>
-              <Route path='/loan' element={<LoanPage/>}/>
-            </Routes>
-          </Layout>
-          </CartProvider>
-          </ProductProvider>
-          </UserProvider>
+          <AddressProvider>
+            <Layout>
+              <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/auth/register' element={<Signup/>}/>
+                <Route path='/auth/login' element={<Login/>}/>
+                <Route path='/auth/user/profile' element={<Profile/>}/>
+                <Route path='/auth/user/change-password' element={<ChangePassword/>}/>
+                <Route path='/categories/:name' element={<ChooseCategory/>}/>
+                <Route path='/categories/:category/subCategory/:subCategory' element={<Product/>}/>
+                <Route path='/product/:id' element={<ProudctDetails/>}/>
+                <Route path='/user/cart' element={<Cart/>}/>
+                <Route path='/about' element={<About/>}/>
+                <Route path='/service' element={<ServiceSection/>}/>
+                <Route path='/farmers' element={<FarmerStories/>}/>
+                <Route path='/knowledge' element={<KnowledgePage/>}/>
+                <Route path='/support' element={<SupportPage/>}/>
+                <Route path='/loan' element={<LoanPage/>}/>
+              </Routes>
+            </Layout>
+          </AddressProvider>
+        </CartProvider>
+        </ProductProvider>
+        </UserProvider>
       </BrowserRouter>
       <ToastContainer
         position="bottom-center"

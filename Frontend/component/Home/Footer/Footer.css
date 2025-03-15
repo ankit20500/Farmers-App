@@ -69,6 +69,7 @@
     margin: 5px auto;
     border-radius: 5px;
     padding: 2rem 0;
+    background-color: rgb(220, 220, 220);
 }
 
 .footer-container {
@@ -121,10 +122,10 @@
     font-size: 1.5rem;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
-    color: #007bff;
+    color: #2d6a4f;
 }
 
 .social-media>a:hover {
     transform: scale(1.2);
-    color: #066ede;
+    color: #23523d;
 }

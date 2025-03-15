@@ -46,7 +46,12 @@ const SupportPage = () => {
           <InputField type={"number"} placeholder={"Enter Your Number"} required={true}/>
 
           <label>Your Problems:</label>
-          <textarea placeholder="Explain your problems..." required></textarea>
+          <textarea 
+              placeholder="Explain your problems..." required
+              rows="3"
+              cols="10"
+              >
+              </textarea>
 
           <Button value={"📨 Submit Complaint"}/>
         </form>

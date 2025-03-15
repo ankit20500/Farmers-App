@@ -112,7 +112,7 @@
     width: 100%;
     padding: 0.7rem;
     margin-top: 0.5rem;
-    background-color: rgba(18, 18, 18, 0.88);
+    background-color: #15623f;
     color: wheat;
     border: none;
     cursor: pointer;
@@ -120,7 +120,7 @@
 }
 
 .cart-subHome > button:hover {
-    background-color: rgba(24, 24, 24, 0.951);
+    background-color: #165337;
 }
 
 

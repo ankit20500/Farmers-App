@@ -7,6 +7,7 @@
     justify-content: space-evenly;
     padding: 0.5rem 0;
     border-bottom: 1px solid rgba(128, 120, 120,0.5);
+    
 }
 
 .aboutStrip-container-value {
@@ -23,14 +24,25 @@
     left: 0;
     width: 0;
     height: 2px;
-    background-color: tomato;
+    background-color: #18a465;
     transition: width 0.2s ease-in-out;
 }
 
+/* 👇 Hover effect */
 .aboutStrip-container-value:hover {
     color: rgb(32, 31, 31);
 }
 
 .aboutStrip-container-value:hover::after {
-    width: 100%; 
+    width: 100%;
+}
+
+/* 👇 Active page underline effect */
+.aboutStrip-container-value.active::after {
+    width: 100%;
+    background-color: #18a465;
+}
+.aboutStrip-container-value.active {
+    font-weight: bold;
+    color: rgb(32, 31, 31);
 }

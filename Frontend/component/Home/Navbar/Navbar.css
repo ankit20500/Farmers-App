@@ -19,9 +19,10 @@
     cursor: pointer;
 } */
 .logo{
-    height: 3rem;
-    width: 6rem;
+    font-weight: 600;
     cursor: pointer;
+    color: #2d6a4f;
+    font-size: x-large;
 }
 
 .searchBar>span{

@@ -1,10 +1,27 @@
+.stories-heading-container{
+  display: flex;
+  justify-content: space-around;
+  width: 98%;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
+}
+
+.farmers-story-content{
+  width: 35rem;
+}
+
+.farmers-story-img>img{
+  height: 24rem;
+}
+
 .stories-container {
     text-align: center;
     padding: 50px 20px;
     background: linear-gradient(to right, #f8f9fa, #e8f5e9);
   }
   
-  .stories-container h2 {
+  .farmers-story-content h2 {
     font-size: 2.5rem;
     color: #2d6a4f;
   }

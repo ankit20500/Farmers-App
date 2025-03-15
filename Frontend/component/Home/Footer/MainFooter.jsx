@@ -11,9 +11,21 @@ function MainFooter(){
         <>
             <footer className="LastFooter">
                 <div className="footer-container">
-                    <IndividualPg poster={'COMPANY'} items={['About Us','Our Team','Careers']}/>
-                    <IndividualPg poster={'SERVICEs'} items={['Web Development', 'UI/UX Design','SEO Optimization']}/>
-                    <IndividualPg poster={'SUPPORT'} items={['FAQ','Contact Us','Terms of Service']}/>
+                    <IndividualPg 
+                        poster={'COMPANY'} 
+                        items={['About Us','Our Team','Careers']}
+                        url={['about','teams','careers']}
+                        />
+                    <IndividualPg 
+                        poster={'SERVICEs'} 
+                        items={['Web Development', 'UI/UX Design','SEO Optimization']}
+                        url={['development','uiuxDesigner','SEO-optimization']}
+                        />
+                    <IndividualPg 
+                        poster={'SUPPORT'} 
+                        items={['FAQ','Contact Us','Terms of Service']}
+                        url={['faq','support','terms-and-service']}
+                        />
                 </div>
             
                 <div>

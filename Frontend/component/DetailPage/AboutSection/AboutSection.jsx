@@ -4,6 +4,7 @@ import BenifitSection from "./BenifitSection";
 import StateSection from "./StateSection";
 import Button from "../../Resuable_Comp/Button";
 import {useNavigate} from 'react-router-dom'
+import ImageField from "../../Resuable_Comp/ImageField";
 
 const About = () => {
   const navigate=useNavigate();
@@ -59,10 +60,18 @@ const About = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="cta">
-        <h2>Join KrishiMart Today!</h2>
-        <p>Start buying and selling directly with trust and transparency.</p>
-        <Button className="cta-button" onclick={()=>navigate("/auth/register")} value={"Get Started"} />
+      <div className="about-join-section">
+        <div className="about-join-img-section">
+            <ImageField image={"https://agrevolution.in/assets/images/about-us/respect.webp"}/>
+        </div>
+        <div className="about-join-content-section">
+          <h2>Join KrishiMart Today!</h2>
+          <p>Start buying and selling directly with trust and transparency.</p>
+          <Button className="cta-button" 
+                  onclick={()=>navigate("/auth/register")} 
+                  value={"Get Started"} 
+              />
+        </div>
       </div>
       
       {/* Trust & Statistics Section */}
