@@ -14,8 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(cors({
-  origin: "http://localhost:5173", // Allow frontend
-  // origin:"*",
+  //origin: "http://localhost:5173", // Allow frontend
+  origin:"*",
   methods: "GET,POST,PUT,DELETE",
   credentials: true // Allow cookies if needed
 }));
