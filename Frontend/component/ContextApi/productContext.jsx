@@ -9,7 +9,7 @@ export const ProductProvider=({children})=>{
     async function fetchProduct(category,subCategory){
         try{
             // for production related request
-            const response=await axios.get(`https://farmers-app-lxfi.onrender.com/product/products?category=pesticides&subcategory=herbicides`,{},{
+            const response=await axios.get(`https://farmers-app-lxfi.onrender.com/product/products?category=${category}&subcategory=${subCategory}`,{},{
                 withCredentials:true
             });
 
