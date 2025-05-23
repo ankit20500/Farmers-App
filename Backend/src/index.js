@@ -12,7 +12,7 @@ const app = express();
 
 // CORS middleware sabse pehle lagao
 app.use(cors({
-  origin: "http://localhost:5173", // frontend URL
+  origin: "https://ankitdmarts.netlify.app", // frontend URL
   methods: "GET,POST,PUT,DELETE",
   credentials: true
 }));
