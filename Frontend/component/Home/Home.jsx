@@ -1,7 +1,7 @@
 import Category from './category/Category';
 import FirstFooter from './Footer/FirstFooter';
 import './Home.css';
-import AllMidimage from './MidSection/Midimage';
+import AllMidimage from './MidSection/MidImage';
 import MidStrip from './MidStrip/MidStrip';
 
 function Home(){
