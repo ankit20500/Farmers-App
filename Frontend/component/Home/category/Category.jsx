@@ -19,7 +19,7 @@ function Category(){
 
                 <CategorySection 
                     name={'Fertilizers'} 
-                    image={'https://th.bing.com/th/id/OIP.7nKBQyLL4o-CbHrgF8d83QHaHa?w=500&h=500&rs=1&pid=ImgDetMain'}
+                    image={'https://th.bing.com/th/id/OIP.hboy9Qu5qbBPNPKq0xEm4gHaE8?rs=1&pid=ImgDetMain'}
                 />
 
                 <CategorySection 

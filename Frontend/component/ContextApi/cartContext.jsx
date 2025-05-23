@@ -6,20 +6,19 @@ import { useNavigate } from "react-router-dom";
 export const cartContext=createContext();
 
 export const CartProvider=({children})=>{
-    const navigate=useNavigate();
 
     // fetch the cart items 
     async function fetchCartItems(userId){
         try {
             // for production related request
-            // const response=await axios.post("https://farmers-app-lxfi.onrender.com/cart",{userId},{
-            //     withCredentials:true
-            // })
-
-            // for localhost related request
-            const response=await axios.post("http://localhost:3000/cart",{userId},{
+            const response=await axios.post("https://farmers-app-lxfi.onrender.com/cart",{userId},{
                 withCredentials:true
             })
+
+            // for localhost related request
+            // const response=await axios.post("http://localhost:3000/cart",{userId},{
+            //     withCredentials:true
+            // })
             return response;
         } catch (error) {
             throw error;
@@ -30,14 +29,14 @@ export const CartProvider=({children})=>{
     async function AddItemsToCart(productDetails){
         try {
             // for production related request
-            // const cart=await axios.put("https://farmers-app-lxfi.onrender.com/cart/add/items",productDetails,{
-            //     withCredentials:true
-            // })
-
-            // for localhost request
-            const cart=await axios.put("http://localhost:3000/cart/add/items",productDetails,{
+            const cart=await axios.put("https://farmers-app-lxfi.onrender.com/cart/add/items",productDetails,{
                 withCredentials:true
             })
+
+            // for localhost request
+            // const cart=await axios.put("http://localhost:3000/cart/add/items",productDetails,{
+            //     withCredentials:true
+            // })
             return cart;
         } catch (error) {
             throw error;
@@ -48,14 +47,14 @@ export const CartProvider=({children})=>{
     async function decreaseItemsToCart(productDetails){
         try {
             // for production related request
-            // const cart=await axios.put("https://farmers-app-lxfi.onrender.com/cart/decrease/items",productDetails,{
-            //     withCredentials:true
-            // })
-
-            // for localhost request 
-            const cart=await axios.put("http://localhost:3000/cart/decrease/items",productDetails,{
+            const cart=await axios.put("https://farmers-app-lxfi.onrender.com/cart/decrease/items",productDetails,{
                 withCredentials:true
             })
+
+            // for localhost request 
+            // const cart=await axios.put("http://localhost:3000/cart/decrease/items",productDetails,{
+            //     withCredentials:true
+            // })
             return cart;
         } catch (error) {
             throw error;
@@ -66,16 +65,16 @@ export const CartProvider=({children})=>{
     async function deleteCartProduct(productdetails){
         try {
             // for production
-            // const cart=await axios.delete("https://farmers-app-lxfi.onrender.com/cart/product/delete",{
-            //     data:productdetails,
-            //     withCredentials:true
-            // })
-
-            // for localhost request
-            const cart=await axios.delete("http://localhost:3000/cart/product/delete",{
+            const cart=await axios.delete("https://farmers-app-lxfi.onrender.com/cart/product/delete",{
                 data:productdetails,
                 withCredentials:true
             })
+
+            // for localhost request
+            // const cart=await axios.delete("http://localhost:3000/cart/product/delete",{
+            //     data:productdetails,
+            //     withCredentials:true
+            // })
             return cart;
         } catch (error) {
             console.log(error);

@@ -19,9 +19,10 @@ function ReviewCart({ review ,setShowReviewInput}) {
     if(diffInDays<=3){
       return `${diffInDays} ${diffInDays === 1 ? "day" : "days"} ago`;
     }
-    return formatedDate=new Date(review.updatedAt).toLocaleDateString("en-IN",{
+    const formatedDate=new Date(review.updatedAt).toLocaleDateString("en-IN",{
       timeZone:"Asia/Kolkata"
     });
+    return formatedDate;
   }
 
   const words=review.comment.split(" ");
