@@ -1,0 +1,66 @@
+:root {
+  /* Color Palette - Premium Agriculture SaaS Theme */
+  --primary: #1b4332;          /* Deep Forest Green */
+  --primary-hover: #122c21;
+  --secondary: #2d6a4f;        /* Nature Green */
+  --secondary-hover: #204b37;
+  --accent-yellow: #ffb703;    /* Earthy Gold / Warning */
+  --accent-orange: #f48c06;    /* Sunset Orange / Highlight */
+  --accent-orange-hover: #d87705;
+  
+  /* Neutral Palette */
+  --neutral-bg: #f8f9fa;       /* Premium Off-White canvas */
+  --neutral-card: #ffffff;     /* Pure White cards */
+  --neutral-border: #e9ecef;   /* Soft border line gray */
+  --neutral-border-focus: #ced4da; /* Focus line gray */
+  --text-dark: #212529;        /* Charcoal for typography contrast */
+  --text-muted: #6c757d;       /* Soft Gray for secondary information */
+  --text-light: #ced4da;       /* Soft outline text */
+  --white: #ffffff;
+  
+  /* Alert Palette */
+  --success: #38b000;          /* Vibey Modern Green */
+  --success-bg: #eaf7e3;
+  --error: #d90429;            /* Premium clean Red */
+  --error-bg: #fde8eb;
+  --info: #0077b6;             /* Modern Blue */
+  --info-bg: #e0f2fe;
+
+  /* Shadows (Soft, Premium, 2026 SaaS Depth) */
+  --shadow-sm: 0 2px 4px rgba(27, 67, 50, 0.04);
+  --shadow-md: 0 8px 16px rgba(27, 67, 50, 0.06);
+  --shadow-lg: 0 16px 32px rgba(27, 67, 50, 0.08);
+  --shadow-glass: 0 8px 32px 0 rgba(27, 67, 50, 0.05);
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Spacing Grid System */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 36px;
+  --space-xxl: 54px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout Constants */
+  --header-height: 80px;
+  --nav-strip-height: 48px;
+  --max-width: 1280px;
+  
+  /* z-index values */
+  --z-negative: -1;
+  --z-normal: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 500;
+  --z-toast: 600;
+}

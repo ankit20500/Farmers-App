@@ -7,12 +7,16 @@ import userRoutes from './Routes/UserRouter.js';
 import authRoutes from './Routes/AuthRouter.js';
 import productRoutes from './Routes/ProductRouter.js';
 import cartRoutes from './Routes/CartRouter.js';
+import farmerCropRoutes from './Routes/FarmerCropRouter.js';
+import orderRoutes from './Routes/OrderRouter.js';
 
 const app = express();
 
 // CORS middleware sabse pehle lagao
 app.use(cors({
-  origin: "https://ankitdmarts.netlify.app", // frontend URL
+  // origin: "https://ankitdmarts.netlify.app", // frontend URL
+  origin:"http://localhost:5173",
+  // origin:"*",
   methods: "GET,POST,PUT,DELETE",
   credentials: true
 }));
@@ -29,6 +33,9 @@ app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
 app.use("/product", productRoutes);
 app.use("/cart", cartRoutes);
+app.use("/farmer-crop", farmerCropRoutes);
+app.use("/order", orderRoutes);
+
 
 // 404 middleware
 app.use((req, res, next) => {

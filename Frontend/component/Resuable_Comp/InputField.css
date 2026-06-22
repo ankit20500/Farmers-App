@@ -1,0 +1,88 @@
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+  margin-bottom: var(--space-md);
+}
+
+.input-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+}
+
+.required-star {
+  color: var(--error);
+  margin-left: 2px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-element {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--neutral-card);
+  border: 1.5px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.input-element:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+}
+
+.input-element[readonly] {
+  background-color: var(--neutral-bg);
+  border-color: var(--neutral-border);
+  cursor: default;
+  color: var(--text-muted);
+}
+
+.input-element[readonly]:focus {
+  box-shadow: none;
+  border-color: var(--neutral-border);
+}
+
+/* Left Icon Layout */
+.input-icon-left {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.input-element.with-icon {
+  padding-left: 42px;
+}
+
+/* Error States */
+.has-error .input-element {
+  border-color: var(--error);
+}
+
+.has-error .input-element:focus {
+  box-shadow: 0 0 0 3px rgba(217, 4, 41, 0.15);
+}
+
+.input-error-msg {
+  font-size: 0.775rem;
+  color: var(--error);
+  font-weight: 500;
+  margin-top: 2px;
+}

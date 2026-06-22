@@ -1,6 +1,49 @@
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
 
+const addressSchema = new mongoose.Schema({
+    fullName: {
+        type: String,
+        required: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    postalCode: {
+        type: String,
+        required: true
+    },
+    fullAddress: {
+        type: String,
+        required: true
+    },
+    landmark: {
+        type: String,
+        default: ""
+    },
+    isDefault: {
+        type: Boolean,
+        default: false
+    }
+});
+
 const userSchema=new mongoose.Schema({
     name:{
         type:String,
@@ -35,13 +78,21 @@ const userSchema=new mongoose.Schema({
         type:String,
         enum:['user','admin'],
         default:'user'
-    }
+    },
+    addresses: [addressSchema],
+    wishlist: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Products'
+    }]
 },{timestamps:true});
 
 userSchema.pre('save',async function(){
-    const hashPassword=await bcrypt.hash(this.password,10);
-    this.password=hashPassword;
+    if (this.isModified('password')) {
+        const hashPassword=await bcrypt.hash(this.password,10);
+        this.password=hashPassword;
+    }
 })
 
 export const User=mongoose.model('User',userSchema);
+
 

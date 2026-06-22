@@ -1,6 +1,16 @@
 import { JWT_SECRET } from '../config/ServerConfig.js';
 import { findUsersProfileRepo } from '../Repository/UserRepository.js';
-import { changePasswordService, createUserService, deleteUserService, updateUserService } from '../service/UserService.js';
+import { 
+    changePasswordService, 
+    createUserService, 
+    deleteUserService, 
+    updateUserService,
+    getUserAddressesService,
+    addAddressService,
+    updateAddressService,
+    deleteAddressService,
+    setDefaultAddressService
+} from '../service/UserService.js';
 import { errorHandler, successHandler } from '../Utility/Handler.js';
 import jwt from 'jsonwebtoken';
 
@@ -86,3 +96,57 @@ export const findUsersProfileController=async function (req,res) {
         return errorHandler(res,404,error.message,error);
     }
 }
+
+// User Address Controllers
+export const getUserAddressesController = async function (req, res) {
+    try {
+        const userId = req.user.id;
+        const addresses = await getUserAddressesService(userId);
+        return successHandler(res, 200, "addresses fetched successfully", addresses);
+    } catch (error) {
+        return errorHandler(res, 500, error.message, error);
+    }
+}
+
+export const addAddressController = async function (req, res) {
+    try {
+        const userId = req.user.id;
+        const addresses = await addAddressService(userId, req.body);
+        return successHandler(res, 201, "address added successfully", addresses);
+    } catch (error) {
+        return errorHandler(res, 400, error.message, error);
+    }
+}
+
+export const updateAddressController = async function (req, res) {
+    try {
+        const userId = req.user.id;
+        const addressId = req.params.addressId;
+        const addresses = await updateAddressService(userId, addressId, req.body);
+        return successHandler(res, 200, "address updated successfully", addresses);
+    } catch (error) {
+        return errorHandler(res, 400, error.message, error);
+    }
+}
+
+export const deleteAddressController = async function (req, res) {
+    try {
+        const userId = req.user.id;
+        const addressId = req.params.addressId;
+        const addresses = await deleteAddressService(userId, addressId);
+        return successHandler(res, 200, "address deleted successfully", addresses);
+    } catch (error) {
+        return errorHandler(res, 400, error.message, error);
+    }
+}
+
+export const setDefaultAddressController = async function (req, res) {
+    try {
+        const userId = req.user.id;
+        const addressId = req.params.addressId;
+        const addresses = await setDefaultAddressService(userId, addressId);
+        return successHandler(res, 200, "default address set successfully", addresses);
+    } catch (error) {
+        return errorHandler(res, 400, error.message, error);
+    }
+}

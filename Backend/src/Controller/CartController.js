@@ -4,13 +4,15 @@ import { errorHandler, successHandler } from "../Utility/Handler.js";
 // fetch the cart items
 export const getCartController=async(req,res)=>{
     try {
-        const cart=await getCartService(req.body.userId);
+        const userId = req.user ? req.user.id : req.body.userId;
+        const cart=await getCartService(userId);
         return successHandler(res,200,"successfully found your cart Items",cart);
     } catch (error) {
         console.log(error);
         return errorHandler(res,404,'not found your cart',error);
     }
 }
+
 
 // add the items in the cart
 export const AddItemsController=async(req,res)=>{

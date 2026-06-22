@@ -1,65 +1,87 @@
-import './Category.css'
+import React from 'react';
+import './Category.css';
 import CategorySection from './SabCategorySection';
-function Category(){
-    return (
-        <div className='category'>
-            <div className="cat-heading">
-                <span>Category</span>
+import SectionHeader from '../../Resuable_Comp/SectionHeader';
+
+function Category() {
+  const categoriesList = [
+    {
+      name: 'Pesticides',
+      image: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?w=400',
+      desc: 'Herbicides & natural organic insect sprays'
+    },
+    {
+      name: 'Seeds',
+      image: 'https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=400',
+      desc: 'Wheat, rice, high-yield vegetable crops'
+    },
+    {
+      name: 'Fertilizers',
+      image: 'https://static.vecteezy.com/system/resources/previews/006/037/292/non_2x/hand-giving-fertilizer-to-young-green-sprout-growing-in-soil-on-green-nature-blur-background-free-photo.JPG',
+      desc: 'Chemical feeds & slow-release organic fertilizers'
+    },
+    {
+      name: 'Nutrients',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400',
+      desc: 'Plant growth promoters & micro-nutrient mixes'
+    },
+    {
+      name: 'Storage Solutions',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400',
+      desc: 'Tarpaulin crop covers, silos, grain storage bags'
+    },
+    {
+      name: 'Flower Seeds',
+      image: 'https://images.unsplash.com/photo-1560717789-0ac7c58ac90a?w=400',
+      desc: 'Hybrid decorative & seasonal flower cultivars'
+    },
+    {
+      name: 'Organic Farming',
+      image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400',
+      desc: 'Bio-composts, earthworm manure, neem cakes'
+    },
+    {
+      name: 'Protective Gear',
+      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400',
+      desc: 'Rubber gloves, farming boots, spray respirators'
+    },
+    {
+      name: 'Animal Husbandry',
+      image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400',
+      desc: 'Nutritious feeds, veterinary vaccines, dairy tools'
+    },
+    {
+      name: 'Farming Equipments',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.m5bSfUW5EmEVGaxDT_e56wHaHa?r=0&w=626&h=626&rs=1&pid=ImgDetMain&o=7&rm=3',
+      desc: 'Sickles, mechanical rotavators, drip irrigation sets'
+    }
+  ];
+
+  return (
+    <section className="categories-section py-xxl" id="categories-section">
+      <div className="container">
+        <SectionHeader
+          title="Browse Farming Needs"
+          subtitle="Shop top quality seeds, fertilizers, tools, and crop protection materials directly from verified supply centers."
+          badge="Product Categories"
+        />
+
+        <div className="categories-grid">
+          {categoriesList.map((cat, idx) => (
+            <div key={idx} className="category-card hover-scale animate-slide-up" style={{ animationDelay: `${idx * 0.05}s` }}>
+              <CategorySection
+                name={cat.name}
+                image={cat.image}
+              />
+              <div className="category-card-meta">
+                <p className="category-card-desc">{cat.desc}</p>
+              </div>
             </div>
-            <div className='category-circle'>
-                <CategorySection  
-                    name={'Pesticides'} 
-                    image={'https://th.bing.com/th/id/OIP.JZk6lq1hE-j3sF-ibK-_fwHaHa?w=600&h=600&rs=1&pid=ImgDetMain'}
-                />
-
-                <CategorySection 
-                    name={'Seeds'} 
-                    image={'https://media.bighaat.com/wsfbanners/ba912d25-3087-4240-8405-3b2622b5d961.webp?w=1920&q=80'}
-                />
-
-                <CategorySection 
-                    name={'Fertilizers'} 
-                    image={'https://th.bing.com/th/id/OIP.hboy9Qu5qbBPNPKq0xEm4gHaE8?rs=1&pid=ImgDetMain'}
-                />
-
-                <CategorySection 
-                    name={'Nutrients'} 
-                    image={'https://media.bighaat.com/wsfbanners/fbb5cfcb-bae3-47e4-bcf2-9556df773ab1.webp?w=1920&q=80'}
-                />
-
-                <CategorySection 
-                    name={'Storage Solutions'} 
-                    image={'https://i.pinimg.com/originals/23/df/6f/23df6f119e7d923adc33290cddf5cfee.jpg'}
-                />
-
-                <CategorySection 
-                    name={'Flower Seeds'} 
-                    image={'https://media.bighaat.com/wsfbanners/69dc72b4-ae76-414c-82ce-611e7e474c0f.webp?w=1920&q=80'}
-                />
-
-                <CategorySection 
-                    name={'Organic Farming'} 
-                    image={'https://media.bighaat.com/wsfbanners/e30ef4b6-7418-430a-98d4-bc38e6070a85.webp?w=1920&q=80'}
-                />
-                
-                <CategorySection 
-                    name={'Protective Gear'} 
-                    image={'https://img-aws.ehowcdn.com/560x560/photos.demandstudios.com/getty/article/94/116/461034645.jpg'}
-                />
-
-                <CategorySection 
-                    name={'Animal Husbandry'} 
-                    image={'https://media.bighaat.com/wsfbanners/7fe75100-e3aa-41cc-9b81-727590e2e4ad.webp?w=1920&q=80'}
-                />
-
-                <CategorySection 
-                    name={'Farming Equipments'} 
-                    image={'https://media.bighaat.com/wsfbanners/8827ae31-f29f-4851-80c5-bde6464abc3f.webp?w=1920&q=80'}
-                />
-                
-            </div>
+          ))}
         </div>
-    )
+      </div>
+    </section>
+  );
 }
 
 export default Category;

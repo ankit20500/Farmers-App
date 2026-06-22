@@ -3,7 +3,7 @@ import { AddItemsController, decreaseItemsToCartController, deleteCartProductCon
 import { isLoggedIn } from '../validator/authValidator.js';
 const cartRoutes=express.Router();
 
-cartRoutes.post("/",getCartController);
+cartRoutes.post("/",isLoggedIn,getCartController);
 cartRoutes.put('/add/items',isLoggedIn,AddItemsController);
 cartRoutes.put('/decrease/items',isLoggedIn,decreaseItemsToCartController);
 cartRoutes.delete('/product/delete',isLoggedIn,deleteCartProductController);

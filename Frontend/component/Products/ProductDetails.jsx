@@ -1,125 +1,195 @@
-import { useParams } from "react-router-dom";
-import "./Products.css";
-import { useContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import Stars from "../StarComp/Star";
-import Loader from "../Loader/Loader";
-import ImageField from "../Resuable_Comp/ImageField";
-import Button from "../Resuable_Comp/Button";
-import { userContext } from "../ContextApi/userContextApi";
-import { productContext } from "../ContextApi/productContext";
-import { cartContext } from "../ContextApi/cartContext";
-import ReviewSection from "./ReviewSection";
-import ReviewInput from "./ReviewInput";
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { IoArrowBackOutline, IoShieldCheckmarkOutline } from 'react-icons/io5';
+import { BsTruck, BsCashCoin } from 'react-icons/bs';
+import { userContext } from '../ContextApi/userContextApi';
+import { productContext } from '../ContextApi/productContext';
+import { cartContext } from '../ContextApi/cartContext';
+import Stars from '../StarComp/Star';
+import Loader from '../Loader/Loader';
+import LoadingSkeleton from '../Resuable_Comp/LoadingSkeleton';
+import Button from '../Resuable_Comp/Button';
+import ReviewSection from './ReviewSection';
+import ReviewInput from './ReviewInput';
+import './Products.css';
 
 function ProductDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { AddItemsToCart } = useContext(cartContext);
   const { fetchProductById } = useContext(productContext);
   const { user } = useContext(userContext);
+
   const [loader, setLoader] = useState(true);
   const [product, setProduct] = useState(null);
-  const [reviews, setReviews] = useState([]); // State for reviews
-  const [showReviewInput, setShowReviewInput] = useState(false); // Review modal state
+  const [reviews, setReviews] = useState([]);
+  const [showReviewInput, setShowReviewInput] = useState(false);
 
-
-  // Fetch product details
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoader(true);
         const response = await fetchProductById(id);
-        setProduct(response.data.data);
-        setReviews(response.data.data.reviews || []); // Fetch reviews
+        const fetchedProduct = response.data.data;
+        setProduct(fetchedProduct);
+        setReviews(fetchedProduct.reviews || []);
         setLoader(false);
       } catch (error) {
-        toast(error.response.message);
+        setLoader(false);
+        console.error(error);
+        toast.error('Failed to load product details');
       }
     }
     fetchData();
-  }, [id]);
+  }, [id, fetchProductById]);
 
-  // Function to add product to cart
   async function handleAddToCart() {
-    if (user) {
-      try {
-        const detail = {
-          product: product._id,
-          quantity: 1,
-        };
-        const response = await AddItemsToCart(detail);
-        toast(response.data.message);
-      } catch (error) {
-        console.log(error);
-        toast(error.response);
-      }
-    } else {
-      toast("Please login for this functionality");
+    if (!user) {
+      toast.info('Please sign in to add items to your cart.');
+      navigate('/auth/login');
+      return;
+    }
+    try {
+      const detail = {
+        product: product._id,
+        quantity: 1,
+      };
+      const response = await AddItemsToCart(detail);
+      toast.success(response.data.message || 'Added to cart!');
+    } catch (error) {
+      console.error(error);
+      toast.error('Failed to add item to cart.');
     }
   }
 
-
-  // If product is null, show loader
   if (loader) {
-    return <Loader />;
+    return (
+      <div className="product-details-container container py-xl">
+        <LoadingSkeleton type="detail" />
+      </div>
+    );
   }
 
+  if (!product) {
+    return (
+      <div className="container py-xl text-center">
+        <h2>Product not found</h2>
+        <Button value="Back to Shop" onclick={() => navigate(-1)} variant="primary" className="mt-md" />
+      </div>
+    );
+  }
+
+  const inStock = product.stock > 0;
+
   return (
-    <div className={`product-details-home ${showReviewInput ? "blur-background" : ""}`}>
-      
-      <span>Go Back</span>
+    <div className={`product-details-container container py-xl animate-fade-in ${showReviewInput ? 'blur-background' : ''}`}>
+      {/* Back navigation pill */}
+      <button className="back-navigation-pill" onClick={() => navigate(-1)}>
+        <IoArrowBackOutline /> <span>Go Back</span>
+      </button>
 
-      <div className="product-subHome">
-        {/* product image */}
-        <div className="product-details-left">
-          <ImageField image={product.image} />
+      <div className="product-details-grid mt-lg">
+        {/* Gallery/Image Frame */}
+        <div className="product-gallery-card">
+          <img src={product.image} alt={product.productname} className="product-main-img" />
+          {!inStock && <span className="sold-out-ribbon">Sold Out</span>}
         </div>
 
-        {/* product details */}
-        <div className="product-details-right">
-          <p>{product.productname}</p>
-          <p>Category: {product.category}</p>
-          <p>SubCategory: {product.subcategory}</p>
-          <div>
-            <Stars rating={product.ratings} /> 
-            ({reviews.length} reviews)
+        {/* Specifications Column */}
+        <div className="product-specifications-col">
+          <span className="product-category-path">
+            {product.category} &gt; {product.subcategory}
+          </span>
+          <h1 className="product-detail-name">{product.productname}</h1>
+          
+          <div className="product-rating-row">
+            <Stars rating={product.ratings} />
+            <span className="reviews-count-text">({reviews.length} customer reviews)</span>
           </div>
-          <p>Description: {product.description}</p>
-          <Button onclick={() => setShowReviewInput(true)} value={"ADD REVIEW"} />
+
+          <p className="product-detail-desc">{product.description}</p>
+          
+          {/* Trust assurances info grid */}
+          <div className="assurances-grid-detail">
+            <div className="assurance-detail-item">
+              <IoShieldCheckmarkOutline className="detail-item-icon" />
+              <span>100% Quality Guaranteed</span>
+            </div>
+            <div className="assurance-detail-item">
+              <BsTruck className="detail-item-icon" />
+              <span>Express Farm Shipping</span>
+            </div>
+            <div className="assurance-detail-item">
+              <BsCashCoin className="detail-item-icon" />
+              <span>Escrow Protected Payments</span>
+            </div>
+          </div>
+
+          <div className="action-buttons-row mt-lg">
+            <Button
+              value="Add Customer Review"
+              onclick={() => {
+                if (user) {
+                  setShowReviewInput(true);
+                } else {
+                  toast.info('Please log in to write a review.');
+                  navigate('/auth/login');
+                }
+              }}
+              variant="outline"
+            />
+          </div>
         </div>
 
-        <div className="product-details-right-2">
-          <div>
-            <span>Price:</span>
-            <span>₹{product.price}</span>
+        {/* E-commerce Purchase Sidecard */}
+        <div className="ecommerce-purchase-sidecard card-glass">
+          <div className="sidecard-price-row">
+            <span className="price-tag-label">Total Price</span>
+            <span className="product-detail-price">₹{product.price}</span>
           </div>
-          <div>
-            <span>Stock:</span>
-            <span>{product.stock > 0 ? "In Stock" : "Out of Stock"}</span>
-          </div>
-          <Button onclick={handleAddToCart} value={"ADD TO CART"} />
-        </div>
 
+          <div className="sidecard-stock-row mt-md">
+            <span className="stock-tag-label">Availability</span>
+            <span className={`stock-status-pill-detail ${inStock ? 'in-stock' : 'out-of-stock'}`}>
+              {inStock ? 'Available in Stock' : 'Out of Stock'}
+            </span>
+          </div>
+
+          <div className="sidecard-actions mt-lg">
+            <Button
+              value={inStock ? 'ADD TO SHOPPING CART' : 'OUT OF STOCK'}
+              onclick={handleAddToCart}
+              variant="secondary"
+              disabled={!inStock}
+              className="w-full purchase-btn"
+            />
+          </div>
+        </div>
       </div>
 
+      {/* Review input modal */}
+      {showReviewInput && (
+        <div className="review-modal-wrapper">
+          <div className="review-modal-card card-premium animate-slide-up">
+            <ReviewInput
+              setShowReviewInput={setShowReviewInput}
+              reviews={reviews}
+              setProduct={setProduct}
+              setReviews={setReviews}
+            />
+          </div>
+          <div className="modal-backdrop" onClick={() => setShowReviewInput(false)} />
+        </div>
+      )}
 
-      {/* Write your Review */}
-      {showReviewInput&&
-        <ReviewInput 
-          setShowReviewInput={setShowReviewInput}
+      {/* Reviews list Section */}
+      <div className="mt-xxl">
+        <ReviewSection
           reviews={reviews}
-          setProduct={setProduct}
-          setReviews={setReviews}
-          />
-        }
-
-        
-      {/* Show all the review */}
-      <ReviewSection 
-          reviews={reviews}
           setShowReviewInput={setShowReviewInput}
-          />
-
-      
+        />
+      </div>
     </div>
   );
 }

@@ -1,26 +1,32 @@
-import './Footer.css'
+import React from 'react';
+import './Footer.css';
+import { GiSprout } from 'react-icons/gi';
+import { FaUsers, FaBoxes } from 'react-icons/fa';
+import { GrMapLocation } from 'react-icons/gr';
 
-function FirstFooter(){
-    return(
-        <div className='top-footer'>
-            <div className='f-name'>
-                <span>100+</span>
-                <span>Brands</span>
+function FirstFooter() {
+  const stats = [
+    { icon: <GiSprout />, value: '100+', label: 'Verified Brands' },
+    { icon: <FaUsers />, value: '10M+', label: 'Happy Farmers' },
+    { icon: <FaBoxes />, value: '5K+', label: 'Agriculture Products' },
+    { icon: <GrMapLocation />, value: '15K+', label: 'Pincodes Served' }
+  ];
+
+  return (
+    <div className="top-footer-container">
+      <div className="top-footer-grid">
+        {stats.map((stat, idx) => (
+          <div key={idx} className="stat-card hover-scale">
+            <div className="stat-icon-wrap">{stat.icon}</div>
+            <div className="stat-content">
+              <span className="stat-value">{stat.value}</span>
+              <span className="stat-label">{stat.label}</span>
             </div>
-            <div className='f-name'>
-                <span>10M+</span>
-                <span>Happy Farmers</span>
-            </div>
-            <div className='f-name'>
-                <span>5K+</span>
-                <span>Products</span>
-            </div>
-            <div className='f-name'>
-                <span>15K+</span>
-                <span>Pincodes Delivary</span>
-            </div>
-        </div>
-    )
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default FirstFooter;

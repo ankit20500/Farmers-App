@@ -1,77 +1,116 @@
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from '../../Resuable_Comp/Button';
-import './Login.css'
-import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
+import { IoMailOutline, IoLockClosedOutline } from 'react-icons/io5';
 import { userContext } from '../../ContextApi/userContextApi';
+import Button from '../../Resuable_Comp/Button';
 import InputField from '../../Resuable_Comp/InputField';
-import ImageField from '../../Resuable_Comp/ImageField';
+import Logo from '../../Resuable_Comp/Logo';
+import './Login.css';
 
-function Login(){
-    const navigate=useNavigate();
-    const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
-    const {loginUser,setUser}=useContext(userContext);
+function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { loginUser, setUser } = useContext(userContext);
+  const [loading, setLoading] = useState(false);
 
-    async function handleLogin(){
-        const obj={email,password};
-        const response=await loginUser(obj);
-        setUser(response.data);
-        navigate("/");
-        toast(response.data.message);
+  async function handleLogin(e) {
+    e.preventDefault();
+    if (!email.trim() || !password.trim()) {
+      toast.error('Please enter both email and password.');
+      return;
     }
-    
-    return(
-        <div className='login'>
-            <div className='login-banner'>
-                <ImageField 
-                    image={'https://raw.githubusercontent.com/ankit20500/Farmers-App/refs/heads/main/Frontend/component/Auth/imageP.webp'}
-                    alt={'login-pg-image'}
-                    />
-            </div>
 
-            <div className='login-content'>
-                <ImageField image={'https://raw.githubusercontent.com/ankit20500/Farmers-App/refs/heads/main/Frontend/component/Auth/logoP.webp'}
-                alt={'login-pg-logo'}
-                />
-                <p className='login-content-heading'>WELCOME TO KRISHIMART</p>
-                <p className='login-content-disc'>Login to your account</p>
-                <div className='login-content-details'>
-                        
-                    <InputField
-                        onChange={(e)=>setEmail(e.target.value)}
-                        title={"Email"}
-                        type={"text"}
-                        placeholder={"example@domain.com"}
-                    />
+    try {
+      setLoading(true);
+      const obj = { email, password };
+      const response = await loginUser(obj);
+      setUser(response.data);
+      toast.success(response.data.message || 'Logged in successfully!');
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+      toast.error('Login failed. Please check credentials.');
+    } finally {
+      setLoading(false);
+    }
+  }
 
-                    <InputField
-                        onChange={(e)=>{setPassword(e.target.value)}}
-                        title={"Password"}
-                        type={"password"}
-                        placeholder={"Enter your password"}
-                    />
-
-                    <div className='login-pg-checkbox-and-forget'>
-                        <label className="login-content-checkbox">
-                            <InputField type="checkbox" />
-                            <span>Remember Me</span>
-                        </label>
-                        <div className='login-content-forget'>
-                            <span>Forgot password?</span>
-                        </div>
-                    </div>
-                    <Button onclick={handleLogin} value={'LOGIN'}/>
-
-                    <p className='login-pg-register'>Non't have an account? 
-                        <Link to={'/auth/register'} className='login-pg-register-btn'>Signup</Link>
-                    </p>
-                </div>
-
-            </div>
+  return (
+    <div className="login-page-container container animate-fade-in">
+      <div className="auth-card card-premium">
+        
+        {/* Left Visual Column */}
+        <div className="auth-visual-col">
+          <div className="auth-visual-overlay"></div>
+          <img
+            src="https://images.pexels.com/photos/2209384/pexels-photo-2209384.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="AgriTech farm field"
+            className="auth-visual-img"
+          />
+          <div className="auth-visual-text">
+            <h3>Direct Farm Trading</h3>
+            <p>Skip middlemen and connect with verified agricultural suppliers and buyers directly.</p>
+          </div>
         </div>
-    )
+
+        {/* Right Form Column */}
+        <div className="auth-form-col">
+          <div className="auth-form-header">
+            <Logo onClick={() => navigate('/')} />
+            <h2 className="mt-md">Welcome Back</h2>
+            <p className="text-meta">Sign in to your farmer portal account</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="auth-form-element mt-lg">
+            <InputField
+              onChange={(e) => setEmail(e.target.value)}
+              title="Email Address"
+              type="email"
+              value={email}
+              placeholder="farmer@domain.com"
+              required
+              icon={<IoMailOutline />}
+            />
+
+            <InputField
+              onChange={(e) => setPassword(e.target.value)}
+              title="Secret Password"
+              type="password"
+              value={password}
+              placeholder="Enter password"
+              required
+              icon={<IoLockClosedOutline />}
+            />
+
+            <div className="auth-utility-row">
+              <label className="auth-remember-me">
+                <input type="checkbox" className="auth-checkbox-input" />
+                <span>Remember Me</span>
+              </label>
+              <span className="auth-forget-link" onClick={() => toast.info('Password reset is simulated.')}>
+                Forgot Password?
+              </span>
+            </div>
+
+            <Button
+              value="SIGN IN TO PORTAL"
+              type="submit"
+              variant="primary"
+              loading={loading}
+              className="w-full mt-md py-md"
+            />
+          </form>
+
+          <p className="auth-redirect-text mt-lg">
+            Don't have an account? <Link to="/auth/register" className="auth-redirect-link">Register Now</Link>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
 export default Login;
-

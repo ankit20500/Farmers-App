@@ -13,14 +13,14 @@ export const UserProvider=({children})=>{
     async function signupButton(obj){
         try {
             // for production related request
-            const response=await axios.post("https://farmers-app-lxfi.onrender.com/user/create",obj,{
-                withCredentials:true
-            })
-
-            // for localhost related request
-            // const response=await axios.post("http://localhost:3000/user/create",obj,{
+            // const response=await axios.post("https://farmers-app-lxfi.onrender.com/user/create",obj,{
             //     withCredentials:true
             // })
+
+            // for localhost related request
+            const response=await axios.post("http://localhost:3000/user/create",obj,{
+                withCredentials:true
+            })
             setUser(response.data);
             return response;
         } catch (error) {
@@ -32,14 +32,14 @@ export const UserProvider=({children})=>{
     async function fetchUserData(){
         try {
             // for production related request
-            const response=await axios.post("https://farmers-app-lxfi.onrender.com/auth/profile",{},{
-                withCredentials:true
-            })
-
-            // for localhost related request
-            // const response=await axios.post("http://localhost:3000/auth/profile",{},{
+            // const response=await axios.post("https://farmers-app-lxfi.onrender.com/auth/profile",{},{
             //     withCredentials:true
             // })
+
+            // for localhost related request
+            const response=await axios.post("http://localhost:3000/auth/profile",{},{
+                withCredentials:true
+            })
             setUser(response.data);
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -58,17 +58,17 @@ export const UserProvider=({children})=>{
     async function loginUser(userDetail){
         try {
             // for production related request
-            const response=await axios.post("https://farmers-app-lxfi.onrender.com/auth/login",userDetail,{
-                withCredentials:true
-            })
-
-            // for localhost related request
-            // const response=await axios.post("http://localhost:3000/auth/login",userDetail,{
+            // const response=await axios.post("https://farmers-app-lxfi.onrender.com/auth/login",userDetail,{
             //     withCredentials:true
             // })
+
+            //for localhost related request
+            const response=await axios.post("http://localhost:3000/auth/login",userDetail,{
+                withCredentials:true
+            })
             return response;
         } catch (error) {
-            toast(error.response.data.message);
+           throw error;
         }
 
     }
@@ -77,20 +77,20 @@ export const UserProvider=({children})=>{
     async function UserLogout(){
         try {
             // for production related request
-            const response=await axios.post("https://farmers-app-lxfi.onrender.com/auth/logout",{},{
-                withCredentials:true
-            })
-
-            // for localhost related request
-            // const response=await axios.post("http://localhost:3000/auth/logout",{},{
+            // const response=await axios.post("https://farmers-app-lxfi.onrender.com/auth/logout",{},{
             //     withCredentials:true
             // })
+
+            // for localhost related request
+            const response=await axios.post("http://localhost:3000/auth/logout",{},{
+                withCredentials:true
+            })
             toast(response.data.message);
             setUser(null);
             navigate("/");
         } catch (error) {
             console.log("logout error",error);
-            toast(error.response.data.message);
+            throw error;
         }
     } 
 
@@ -98,14 +98,14 @@ export const UserProvider=({children})=>{
     async function changePassword(obj){
         try {
             // for production related request
-            const response=await axios.put("https://farmers-app-lxfi.onrender.com/user/password/update",obj,{
-                withCredentials:true
-            })
-
-            // for localhost related request
-            // const response=await axios.put("http://localhost:3000/user/password/update",obj,{
+            // const response=await axios.put("https://farmers-app-lxfi.onrender.com/user/password/update",obj,{
             //     withCredentials:true
             // })
+
+            // for localhost related request
+            const response=await axios.put("http://localhost:3000/user/password/update",obj,{
+                withCredentials:true
+            })
             return response
         } catch (error) {
             throw error;
@@ -116,14 +116,14 @@ export const UserProvider=({children})=>{
     async function updateUserProfile(obj){
         try {
             // for production related request
-            const response=await axios.put("https://farmers-app-lxfi.onrender.com/user/update",obj,{
-                withCredentials:true
-            })
-
-            // for localhost related request
-            // const response=await axios.put("http://localhost:3000/user/update",obj,{
+            // const response=await axios.put("https://farmers-app-lxfi.onrender.com/user/update",obj,{
             //     withCredentials:true
             // })
+
+            // for localhost related request
+            const response=await axios.put("http://localhost:3000/user/update",obj,{
+                withCredentials:true
+            })
             toast(response.data.message);
         } catch (error) {
             console.log(error);
@@ -135,14 +135,14 @@ export const UserProvider=({children})=>{
     async function deleteUser(id){
         try {
             // for production related request
-            const response=await axios.delete(`https://farmers-app-lxfi.onrender.com/user/delete/${id}`,{
-                withCredentials:true
-            });
-
-            // for localhost related request
-            // const response=await axios.delete(`http://localhost:3000/user/delete/${id}`,{
+            // const response=await axios.delete(`https://farmers-app-lxfi.onrender.com/user/delete/${id}`,{
             //     withCredentials:true
             // });
+
+            // for localhost related request
+            const response=await axios.delete(`http://localhost:3000/user/delete/${id}`,{
+                withCredentials:true
+            });
             toast(response.data.message);
             setUser(null);
             navigate("/");
@@ -156,13 +156,13 @@ export const UserProvider=({children})=>{
     async function findUsersProfile(id) {
         try {
             // for production
-            const user=await axios.get(`https://farmers-app-lxfi.onrender.com/user/profile/${id}`,{
-                withCredentials:true
-            })
-
-            // const user=await axios.get(`http://localhost:3000/user/profile/${id}`,{
+            // const user=await axios.get(`https://farmers-app-lxfi.onrender.com/user/profile/${id}`,{
             //     withCredentials:true
             // })
+
+            const user=await axios.get(`http://localhost:3000/user/profile/${id}`,{
+                withCredentials:true
+            })
             return user;
         } catch (error) {
             console.log(error);

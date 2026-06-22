@@ -1,0 +1,96 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--neutral-bg);
+  overflow-x: hidden;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+main {
+  min-height: calc(100vh - var(--header-height) - var(--nav-strip-height) - 300px);
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Custom Scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cdd2d6;
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Toast Notification Global Styling Overrides for KrishiMart */
+.Toastify__toast-container {
+  z-index: var(--z-toast) !important;
+}
+
+.Toastify__toast {
+  font-family: 'Inter', sans-serif !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--space-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  background-color: var(--neutral-card) !important;
+  color: var(--text-dark) !important;
+  border: 1px solid var(--neutral-border) !important;
+}
+
+.Toastify__toast--success {
+  border-left: 5px solid var(--success) !important;
+}
+
+.Toastify__toast--error {
+  border-left: 5px solid var(--error) !important;
+}
+
+.Toastify__toast--info {
+  border-left: 5px solid var(--info) !important;
+}
+
+.Toastify__close-button {
+  color: var(--text-muted) !important;
+}
+
+.Toastify__toast-icon {
+  width: 22px !important;
+}

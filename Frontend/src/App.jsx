@@ -15,6 +15,7 @@ import ChangePassword from '../component/Auth/ChangePassword/HandlePassword'
 import Product from '../component/Products/AllProducts'
 import ProudctDetails from '../component/Products/ProductDetails'
 import Cart from '../component/Cart/Cart'
+import Checkout from '../component/Checkout/Checkout'
 import About from '../component/DetailPage/AboutSection/AboutSection'
 import ServiceSection from '../component/DetailPage/ServiceSection/ServiceSection'
 import FarmerStories from '../component/DetailPage/Farmers_Review/FarmersReview'
@@ -22,6 +23,12 @@ import KnowledgePage from '../component/DetailPage/Knowledge/Knowledge'
 import SupportPage from '../component/DetailPage/SupportSection/SupportSection'
 import LoanPage from '../component/DetailPage/LoanSection/LoanSection'
 import { AddressProvider } from '../component/ContextApi/addressContext'
+
+// Farmer Marketplace Routes
+import FarmerMarketplace from '../component/FarmerMarketplace/FarmerMarketplace'
+import FarmerProductDetail from '../component/FarmerMarketplace/FarmerProductDetail'
+import FarmerProfile from '../component/FarmerMarketplace/FarmerProfile'
+import SellCrops from '../component/FarmerMarketplace/SellCrops'
 
 function App() {
   
@@ -44,12 +51,20 @@ function App() {
                 <Route path='/categories/:category/subCategory/:subCategory' element={<Product/>}/>
                 <Route path='/product/:id' element={<ProudctDetails/>}/>
                 <Route path='/user/cart' element={<Cart/>}/>
+                <Route path='/checkout' element={<Checkout/>}/>
                 <Route path='/about' element={<About/>}/>
+
                 <Route path='/service' element={<ServiceSection/>}/>
                 <Route path='/farmers' element={<FarmerStories/>}/>
                 <Route path='/knowledge' element={<KnowledgePage/>}/>
                 <Route path='/support' element={<SupportPage/>}/>
                 <Route path='/loan' element={<LoanPage/>}/>
+                
+                {/* Farmer Marketplace Routes */}
+                <Route path='/farmer-marketplace' element={<FarmerMarketplace/>}/>
+                <Route path='/farmer-marketplace/product/:id' element={<FarmerProductDetail/>}/>
+                <Route path='/farmer-marketplace/profile/:id' element={<FarmerProfile/>}/>
+                <Route path='/farmer-marketplace/sell' element={<SellCrops/>}/>
               </Routes>
             </Layout>
           </AddressProvider>

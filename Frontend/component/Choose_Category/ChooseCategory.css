@@ -1,40 +1,261 @@
-.category-home{
-    height: 65vh;
-    width: 98vw;
-    margin: 1rem 0px;
-    
+.category-page-wrap {
+  min-height: 80vh;
 }
 
-.category-content{
-    height: auto;
-    width: 98%;
-    max-width: 40rem;
-    /* background-color: aliceblue; */
-    margin: 0px auto;
-    margin-top: 0.3rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* Seeds Hero Banner Card */
+.seeds-hero-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xl) var(--space-xxl);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(234, 247, 227, 0.7) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border: 1px solid rgba(45, 106, 79, 0.15);
+  box-shadow: var(--shadow-sm);
+}
+
+.seeds-banner-content {
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.seeds-banner-content h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin: var(--space-sm) 0 var(--space-xs);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.seeds-banner-content p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.seeds-banner-illust {
+  font-size: 6rem;
+  color: var(--secondary);
+  opacity: 0.15;
+  user-select: none;
+  transform: rotate(15deg);
+}
+
+/* Recommender Columns Split */
+.recommender-widget-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-xxl);
+  align-items: flex-start;
+}
+
+.recommender-input-card {
+  padding: var(--space-xl);
+}
+
+.recommender-input-card h3 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: var(--space-xs);
+}
+
+.recommender-input-group {
+  margin-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.season-pills-row {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.season-pill-btn {
+  flex: 1;
+  padding: 10px;
+  background-color: var(--neutral-bg);
+  border: 1.5px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+  text-align: center;
+}
+
+.season-pill-btn:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+.season-pill-btn.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.recommender-output-col {
+  flex: 1;
+}
+
+.recommendations-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+/* Recommendation Item Card */
+.recommendation-result-card {
+  padding: var(--space-lg);
+  border: 1px solid var(--neutral-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.recom-card-badge-row {
+  margin-bottom: var(--space-sm);
+}
+
+.recom-card-body h4 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin: 0 0 var(--space-xs) 0;
+}
+
+.recom-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xs);
+  background-color: var(--neutral-bg);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  margin: var(--space-md) 0;
+  font-size: 0.85rem;
+}
+
+.recom-metrics-grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+.recom-metrics-grid span {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.725rem;
+  text-transform: uppercase;
+}
+
+.recom-metrics-grid strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+/* Category grid for Crop Subcategories and other subgroups */
+.categories-pills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.subcategory-modern-card {
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  height: 100%;
+}
+
+.subcat-icon-box {
+  width: 58px;
+  height: 58px;
+  background-color: var(--success-bg);
+  border-radius: 50%;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.subcategory-modern-card h4 {
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.2px;
+}
+
+.subcategory-modern-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-lg);
+  flex: 1;
+}
+
+.subcat-link-prompt {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--secondary);
+  transition: color var(--transition-fast);
+  margin-top: auto;
+}
+
+.subcategory-modern-card:hover .subcat-link-prompt {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Responsive breakdowns */
+@media (max-width: 1024px) {
+  .categories-pills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .recommendations-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 850px) {
+  .recommender-widget-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  .categories-pills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .seeds-hero-banner {
+    padding: var(--space-lg);
+    text-align: center;
+    flex-direction: column-reverse;
+  }
+  .seeds-banner-content {
+    max-width: 100%;
     align-items: center;
+  }
+  .seeds-banner-illust {
+    display: none;
+  }
 }
 
-.category-content>div{
-    height: 10rem;
-    width: 18rem;
-    background: linear-gradient(to bottom, rgb(9, 217, 99), rgb(50, 191, 11), rgb(232, 236, 2));
-    border: 2px solid black;
-    box-shadow: 0 0 10px 2px rgb(67, 66, 66);
-    margin: 0.5rem;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform-origin: center;
-}
-
-.category-content>div:hover{
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+@media (max-width: 480px) {
+  .categories-pills-grid {
+    grid-template-columns: 1fr;
+  }
 }

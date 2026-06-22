@@ -16,12 +16,17 @@ export const createCartRepo=async(userId)=>{
 // get cart details for any user's with product details
 export const getCartRepo=async(userId)=>{
     try {
-        const cart=await Cart.findOne({user:userId}).populate("items.product");
+        let cart=await Cart.findOne({user:userId}).populate("items.product");
+        if (!cart) {
+            cart = await Cart.create({ user: userId });
+            cart = await Cart.findById(cart._id).populate("items.product");
+        }
         return cart;
     } catch (error) {
         throw error;
     }
 }
+
 
 // get cart details for any user's without product details 
 export const getCartInfoRepo=async(userId)=>{

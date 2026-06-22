@@ -1,5 +1,16 @@
 import { createCartRepo, deleteCartRepo } from "../Repository/CartRepository.js";
-import { changePasswordRepo, createUserRepo, deleteUserRepo, findUser, updateUserRepo } from "../Repository/UserRepository.js"
+import { 
+    changePasswordRepo, 
+    createUserRepo, 
+    deleteUserRepo, 
+    findUser, 
+    updateUserRepo,
+    getUserAddressesRepo,
+    addAddressRepo,
+    updateAddressRepo,
+    deleteAddressRepo,
+    setDefaultAddressRepo
+} from "../Repository/UserRepository.js"
 import bcrypt from 'bcrypt';
 
 // create user profile
@@ -61,3 +72,44 @@ export const deleteUserService=async(id)=>{
         throw error;
     }
 }
+
+// User Address Services
+export const getUserAddressesService = async (userId) => {
+    try {
+        return await getUserAddressesRepo(userId);
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const addAddressService = async (userId, addressData) => {
+    try {
+        return await addAddressRepo(userId, addressData);
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const updateAddressService = async (userId, addressId, addressData) => {
+    try {
+        return await updateAddressRepo(userId, addressId, addressData);
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const deleteAddressService = async (userId, addressId) => {
+    try {
+        return await deleteAddressRepo(userId, addressId);
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const setDefaultAddressService = async (userId, addressId) => {
+    try {
+        return await setDefaultAddressRepo(userId, addressId);
+    } catch (error) {
+        throw error;
+    }
+}

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--primary);
+}
+
+/* Headings scale */
+h1 {
+  font-size: 2.5rem; /* 40px */
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2rem; /* 32px */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+}
+
+p {
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* Custom classes for SaaS text details */
+.text-hero {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 3.25rem;
+  line-height: 1.15;
+}
+
+.text-meta {
+  font-size: 0.875rem; /* 14px */
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.text-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: var(--accent-orange);
+}
